@@ -83,6 +83,18 @@
   .badge img { height: 54px; width: auto; }
   .badge:hover { filter: brightness(1.15); }
   .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
   ul.plain { list-style: none; padding: 0; margin: 0; }
   ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
   ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
@@ -104,6 +116,12 @@
   </div>
 
   <p class="lede">A private iPhone journal for people who already follow an injection routine: what you used, how much, when, where, and how you felt. You bring the names, the quantities and the schedule. Vialog keeps the record.</p>
+
+  <div class="shots">
+    <img src="shot-today.jpg" alt="Today: the routines to record today, the next entry and this week" width="552" height="1200" loading="lazy">
+    <img src="shot-record.jpg" alt="Recording an injection: quantity, time and site on one slip" width="552" height="1200" loading="lazy">
+    <img src="shot-routine.jpg" alt="A routine's planned quantity over time, with each record as a dot" width="552" height="1200" loading="lazy">
+  </div>
 
   <p class="standing">A personal record. This app does not recommend products or changes to treatment. It never selects anything, calculates a dose, or suggests a change.</p>
 
