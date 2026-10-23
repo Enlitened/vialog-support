@@ -1,9 +1,9 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "vialog-support.vercel.app" }],
-      "destination": "https://vialog.club/:path*",
+      "destination": "https://vialog.club/$1",
       "permanent": true
     }
   ]
