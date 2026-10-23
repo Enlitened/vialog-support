@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>A schedule that survives daylight saving: identity is not an instant — Vialog blog</title>
+<meta name="description" content="Why a scheduled entry in Vialog is named by schedule version, local day and slot rather than an instant, and how that survives daylight saving.">
+<link rel="canonical" href="https://vialog.club/blog/scheduled-entries-and-daylight-saving.html">
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="An injection schedule that survives daylight saving: identity is not an instant">
+<meta property="og:description" content="Naming a scheduled entry by version, local day and slot, and what the clocks moving does to everything else.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/blog/scheduled-entries-and-daylight-saving.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. An engineering post: it describes
+     how the schedule is stored, never what anyone should inject or when. -->
+<link rel="stylesheet" href="../help/help.css">
+<style type="text/css">
+  pre, code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .86rem; }
+  pre {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; margin: 0 0 18px; max-width: 100%;
+    overflow-x: auto; -webkit-overflow-scrolling: touch; line-height: 1.5;
+  }
+  pre code { background: none; border: 0; padding: 0; }
+  p code, li code {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1px 6px; overflow-wrap: anywhere;
+  }
+  p.byline { color: var(--muted); font-size: .9rem; margin: -4px 0 18px; }
+  p.source { color: var(--muted); font-size: .85rem; margin: -10px 0 18px; }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "An injection schedule that survives daylight saving: identity is not an instant",
+  "datePublished": "2026-10-23",
+  "author": { "@type": "Person", "name": "Colin Sergay" },
+  "publisher": { "@type": "Organization", "name": "Vialog", "logo": { "@type": "ImageObject", "url": "https://vialog.club/icon-256.png" } },
+  "url": "https://vialog.club/blog/scheduled-entries-and-daylight-saving.html",
+  "mainEntityOfPage": "https://vialog.club/blog/scheduled-entries-and-daylight-saving.html"
+}
+</script>
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">Blog</a></nav>
+
+  <h1>An injection schedule that survives daylight saving: identity is not an instant</h1>
+  <p class="byline">Colin Sergay · <time datetime="2026-10-23">23 October 2026</time></p>
+  <p class="lede">Vialog is an iPhone journal for an injection routine someone already follows. The routine has a schedule, and each scheduled entry needs a name that lasts as long as the record does. This is why that name is never a point in time.</p>
+
+  <h2>The obvious key, and where it breaks</h2>
+  <p>A schedule that says "daily at 08:00" produces a stream of expected entries. Each one can be recorded, marked as skipped, snoozed from a notification, or left alone and shown as not logged. All of those need to point at the same entry, and the tempting key is the moment it is due: a <code>Date</code>, which is unique, sortable and already there.</p>
+  <p>I live in Australia, where the clocks move twice a year, and the instant fails on exactly those two nights.</p>
+  <ul>
+    <li><strong>Spring forward.</strong> In Sydney on 4 October 2026 the clock goes from 02:00 straight to 03:00. An entry at 02:30 has no instant at all. Whatever <code>Date</code> you get is an artefact of whichever API you asked, and two code paths that ask differently give the same entry two keys.</li>
+    <li><strong>Fall back.</strong> On 5 April 2026, 02:30 happens twice, an hour apart. Now two instants could claim one entry, and a generator that is careless about it produces two.</li>
+    <li><strong>Travel, and every other day.</strong> An 08:00 entry in New York is 13:00 UTC in January and 12:00 UTC after the March change. The instant is derived from a zone's rules, and the rules are not the identity.</li>
+  </ul>
+  <p>If the stored record says "the entry at 2026-03-09T12:00Z", that string is only correct for as long as every part of the app computes the instant the same way, from the same zone, under the same tz database. That is a lot to promise for a record someone might export years later.</p>
+
+  <h2>What the key is instead</h2>
+  <p>An entry is named by three things: the schedule version that produced it, the local calendar day it belongs to, and the slot (one time of day in that version, with its own UUID). The instant is derived from those, never the other way round.</p>
+<pre><code>/// Version, nominal local day and slot — never the instant. The instant is derived, and the
+/// two days a year it moves by an hour are exactly the days the identity must not.
+nonisolated struct OccurrenceKey: Hashable, Sendable, Codable {
+    let scheduleVersionID: UUID
+    let localDay: LocalDate
+    let slotID: UUID
+
+    /// The stored form: `&lt;version&gt;|&lt;yyyy-MM-dd&gt;|&lt;slot&gt;`.
+    var token: String {
+        "\(scheduleVersionID.uuidString)|\(localDay.token)|\(slotID.uuidString)"
+    }
+}</code></pre>
+  <p class="source"><code>Vialog/Domain/Occurrence.swift</code>; the <code>CustomStringConvertible</code> conformance and the initialisers are left out.</p>
+  <p><code>LocalDate</code> is year, month and day with no zone, and <code>LocalTime</code> is hour and minute. The slot has an id separate from its time so that moving a slot from 08:00 to 08:30 keeps it the same slot, while adding a second slot at 08:00 makes a different one. Each schedule version carries its own IANA zone, chosen in the editor's "Schedule zone" row and defaulting to the device's zone when the routine is made. The generator reads every day and slot in that zone; nothing in it reads the clock or the device's zone.</p>
+  <p>That is the answer to travel. Changing the device's zone does not change which entries exist or when they are due. If someone wants the plan read in the new zone, that is a schedule change, and a schedule change is a new version, which I come to below.</p>
+
+  <h2>The policy, stated once</h2>
+  <p>Deriving the instant still has to answer the two awkward nights. Vialog answers them in one function, <code>OccurrenceGenerator.instant(for:on:in:)</code>, and nowhere else:</p>
+  <ul>
+    <li>A wall-clock time that does not exist moves forward by the length of the gap and keeps its minutes: 02:30 becomes 03:30.</li>
+    <li>A wall-clock time that exists twice uses the first.</li>
+  </ul>
+<pre><code>guard let start = day.startOfDay(in: calendar) else { return nil }
+let components = DateComponents(hour: time.hour, minute: time.minute, second: 0)
+// `after:` is exclusive, so search from just before the day starts.
+guard let first = calendar.nextDate(
+    after: start.addingTimeInterval(-1), matching: components,
+    matchingPolicy: .nextTimePreservingSmallerComponents,
+    repeatedTimePolicy: .first, direction: .forward
+) else { return nil }
+
+// Was the time moved? Compare what the clock reads at the instant with what was asked.
+let resolved = LocalTime(from: first, calendar: calendar)
+if resolved != time || LocalDate(first, calendar: calendar) != day {
+    return (first, .movedForward(resolvedTime: resolved))
+}</code></pre>
+  <p class="source"><code>Vialog/Domain/Occurrence.swift</code>; one comment shortened and the call rewrapped.</p>
+  <p>The detail that matters is the matching policy. <code>.nextTimePreservingSmallerComponents</code> keeps the minutes when it has to move an hour that is not there. The convenient <code>date(bySettingHour:minute:second:of:)</code> collapses a nonexistent 02:30 to 03:00, so the code's own comment says it is deliberately not used. Thirty minutes may not sound like much, but it means two ways of computing the same entry disagree, and the disagreement only shows up one night a year.</p>
+  <p>The repeated hour is detected separately. A second search with <code>repeatedTimePolicy: .last</code> would find the same instant on every ordinary day, and this runs for every slot of every day a window covers, so the function first asks the zone for its next daylight-saving transition and makes the second search only when one falls within 26 hours of the day's start. When the two searches disagree, the entry is marked <code>.firstOfRepeatedTime</code>. Either way the adjustment is recorded on the <code>Occurrence</code> beside its due instant, not folded into its key.</p>
+  <p>Two smaller things follow from keying on the local day. The generator walks one local day before the requested window and one after it, because a slot's instant can land on a different UTC day from its nominal local day. And a planned quantity that changes over time is stored as steps keyed on the local day, so a step applies from the day it names whatever the clocks did to that day's instants.</p>
+
+  <h2>A change is a new version</h2>
+  <p>The first part of the key is the version, and that is what keeps history still. A <code>SchedulePlan</code> is immutable once it has started. Changing the schedule never edits it: <code>ScheduleEditor.change</code> closes the version in force at the "changes from" instant (its <code>effectiveUntil</code>, which is exclusive, moves there) and adds a new, open-ended version that starts at the same instant. An entry exactly at the boundary belongs to the new version. Every entry and record the old version produced keeps pointing at it, so last month reads exactly as it did.</p>
+  <p>The boundary has one rule worth showing. A change may not start before an entry the user has already dealt with:</p>
+<pre><code>static func earliestEffectiveFrom(now: Date, resolvedDueInstants: [Date]) -&gt; Date {
+    guard let latest = resolvedDueInstants.filter({ $0 &gt;= now }).max() else { return now }
+    return latest.addingTimeInterval(1)
+}</code></pre>
+  <p class="source"><code>Vialog/Domain/ScheduleEditor.swift</code>.</p>
+  <p>Without it, recording this evening's entry early and then changing the schedule from this afternoon would leave that record under a version that no longer covers its instant, and the new version would offer the same slot again as not logged. Pushing the boundary one second past the latest resolved entry keeps one entry, one record. A version that has not started yet can be withdrawn instead, and withdrawing it reopens the version that was closed for it.</p>
+
+  <h2>Why that makes writes safe to repeat</h2>
+  <p>Recording is idempotent on a <code>commandID</code>, a UUID fixed when the user taps, not on any timestamp. A tap on the Apple Watch keeps its id whether it reaches the phone as a live message or a queued transfer, so if both land it is recorded once. The store looks for the command first and returns the earlier outcome if it finds one. Two separate unscheduled injections recorded in the same second carry different command IDs, so they are two records, and that is correct.</p>
+  <p>For a scheduled entry, the store then re-derives the entry from the schedule as it stands now, from its key alone:</p>
+<pre><code>func recordAdministration(_ command: RecordAdministrationCommand) -&gt; … {
+    if let existing = administration(commandID: command.commandID) {
+        return .success(RecordOutcome(administrationID: existing.id, /* … */ wasAlreadyApplied: true))
+    }
+    // … routine exists, is not archived, the time is not in the future …
+    if case .occurrence(let key) = command.target {
+        guard let current = currentOccurrence(for: key, routineID: routine.id) else { return .failure(.staleOccurrence) }
+        guard resolution(for: key) == nil else { return .failure(.occurrenceAlreadyResolved) }
+        occurrence = current
+    }
+    // … insert the record and its resolution, then one save …
+}</code></pre>
+  <p class="source"><code>Vialog/Persistence/VialogStore.swift</code>, simplified where marked with <code>…</code>.</p>
+  <p><code>currentOccurrence</code> goes to <code>RoutineTimeline.occurrence(for:)</code>, which finds the version by its id and the slot by its id, checks the day is a real calendar day in the version's zone and inside the recurrence, resolves the wall-clock time with the same <code>instant(for:on:in:)</code>, and checks the version is in force at that instant and no pause covers it. The key is either still produced, or it is not.</p>
+  <p>That is what makes an old notification harmless. A reminder's payload carries the key's token. If the schedule changed after the banner was delivered, that version no longer produces that day's entry, and "Record as skipped" from that banner is refused with <code>.staleOccurrence</code>, whose message reads "This entry belongs to a schedule that has since changed." Nothing is written against an entry that no longer exists, and nothing is guessed from the time on the banner.</p>
+  <p>The reminder planner relies on the same property in the other direction. Its window starts one day before now (<code>ReminderPlanner.lookbackDays = 1</code>), because a snooze is asked for after the banner fired, when the entry it names is already behind the clock. A window that began at now could never find it, and the snooze was dropped. A delivered banner comes down when its key is resolved or no longer produced, never merely because its due time has passed.</p>
+
+  <h2>How the tests pin it down</h2>
+  <p>The policy is tested as scheduling behaviour, with real zones and real 2026 transition dates, in <code>VialogTests/OccurrenceTests.swift</code>:</p>
+<pre><code>@Test func newYorkSpringForwardMovesANonexistentTimeForward() {
+    // 2026-03-08 02:00 EST → 03:00 EDT. 02:30 does not exist.
+    let plan = Fixture.dailyPlan(routineID: routineID, from: Fixture.utc(2026, 3, 1),
+                                 times: [LocalTime(hour: 2, minute: 30)], zone: Fixture.newYork)
+    let occurrences = OccurrenceGenerator.occurrences(for: plan, in: Fixture.utc(2026, 3, 8)..&lt;Fixture.utc(2026, 3, 9))
+    #expect(occurrences.count == 1)
+    let occurrence = occurrences[0]
+    #expect(occurrence.dueAt == Fixture.utc(2026, 3, 8, 7, 30))  // 03:30 EDT
+    #expect(occurrence.daylightSavingAdjustment == .movedForward(resolvedTime: LocalTime(hour: 3, minute: 30)))
+    #expect(occurrence.key.localDay == LocalDate(year: 2026, month: 3, day: 8))
+}</code></pre>
+  <p class="source"><code>VialogTests/OccurrenceTests.swift</code>; one call rewrapped.</p>
+  <ul>
+    <li><code>identityIsVersionDayAndSlotNotInstant</code> generates 7–9 March in New York and checks the three keys exactly, while the due instants move from 13:00 to 12:00 UTC across the change, and that every key's token parses back to the same key.</li>
+    <li><code>newYorkFallBackUsesTheFirstOfARepeatedTime</code> takes 01:30 on 1 November 2026 and expects one entry, at 05:30 UTC, the earlier of the two.</li>
+    <li><code>sydneyTransitionsFollowTheSamePolicy</code> runs both Australian nights for a 02:30 slot: the repeated one in April, the skipped one in October, which lands at 03:30.</li>
+    <li><code>directLookupMatchesEveryGeneratedEntry</code> runs a year of five slots in New York, Sydney, Cairo (whose clocks spring forward at midnight, so one day has no 00:00) and Lord Howe Island (whose transition is half an hour), and checks that looking up each generated key by itself returns the same entry, and that keys inside a pause, before the start or after the end, or naming an unknown slot, return nothing.</li>
+    <li><code>lookupRejectsANormalizedOrSkippedCalendarDay</code> uses Pacific/Apia, which skipped 30 December 2011 entirely, and 31 February, so a key naming a day that never happened cannot be read as one.</li>
+  </ul>
+  <p>On the store side, <code>StoreTests</code> has <code>recordingTheSameCommandTwiceLandsOnce</code>, <code>aStaleOccurrenceCannotBeRecordedOrSkipped</code> (a replaced plan's entry, a slot the version never had, and an archived routine), <code>aChangeCannotCutOffAnOccurrenceRecordedEarly</code>, and <code>changingTomorrowLeavesLastMonthIdentical</code>, which records an April entry, changes the schedule in May and checks that April's entries compare equal to what they were before. <code>ReminderPlannerTests</code> has <code>aSnoozeForAnOccurrenceThatHasAlreadyFiredIsPlanned</code> for the look-back.</p>
+
+  <h2>What I would tell myself at the start</h2>
+  <p>Store the thing the user chose (a day, a time of day, a zone, a version) and derive the thing the system needs (an instant), in one function, with the edge cases written down where the function is. Everything downstream got simpler once the key stopped depending on the clock: retries became lookups, an out-of-date banner became a refusal with a reason, and the two odd nights a year became tests rather than bug reports.</p>
+
+  <p>Vialog is on the <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-blog&amp;mt=8">App Store</a> for iPhone.</p>
+
+  <footer>
+    <a href="./">More from the blog</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-blog&amp;mt=8">Vialog on the App Store</a> · © 2026 Colin Sergay
+  </footer>
+</main>
+</body>
+</html>
