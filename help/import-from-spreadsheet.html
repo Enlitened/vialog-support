@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Moving an injection log from a spreadsheet — Vialog help</title>
+<meta name="description" content="Bring an injection log kept in a spreadsheet or another app into Vialog on iPhone: export it as CSV, match the columns, check the preview, import.">
+<link rel="canonical" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moving an injection log from a spreadsheet">
+<meta property="og:description" content="A CSV from a spreadsheet or another app, its columns matched, checked in a preview, then imported.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/" },
+    { "@type": "ListItem", "position": 2, "name": "Help", "item": "https://vialog.club/help/" },
+    { "@type": "ListItem", "position": 3, "name": "Moving an injection log from a spreadsheet", "item": "https://vialog.club/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">Help</a></nav>
+
+  <h1>Moving an injection log from a spreadsheet</h1>
+  <p class="lede">If you have kept your injections in a spreadsheet, on paper you have typed up, or in another app that exports CSV, Vialog can bring those records in. You match the columns yourself, see every row before anything is saved, and the import is free.</p>
+
+  <p>The import is in <span class="path">Settings › Export, backup and delete › Import history from CSV</span>. The welcome screen offers it too, under <span class="path">Restore backup or import history</span>. To move everything from another iPhone that already has Vialog, restore a backup instead; the import is for records kept somewhere else.</p>
+
+  <h2>Getting the file ready</h2>
+  <p>Numbers, Excel and Google Sheets can all save a sheet as CSV. Each row is one record; the first row holds the column names. Vialog needs three columns and can take a few more:</p>
+  <ul>
+    <li><strong>Date and time</strong>, with its time zone, in the form <span class="path">2026-09-01T08:00:00+10:00</span>. A date with no time, or a time with no zone, is refused rather than guessed, and so is a date later than now.</li>
+    <li><strong>Amount</strong>, the number you recorded, exactly as written. If your sheet writes <span class="path">0,5</span> rather than <span class="path">0.5</span>, turn on <span class="path">Amounts use a decimal comma</span>.</li>
+    <li><strong>Unit</strong>: <span class="path">mg</span>, <span class="path">mcg</span>, <span class="path">mL</span>, <span class="path">IU</span> or <span class="path">device</span> for a device's own markings, with a <strong>Device description</strong> column to say which device.</li>
+    <li><strong>Site</strong> and <strong>Note</strong>, both optional.</li>
+  </ul>
+  <p>Nothing is converted. A record comes in with the amount and unit its row gives, as every record in Vialog does. A file can hold up to 5,000 rows and must be smaller than 2 MB.</p>
+
+  <h2>Matching the columns</h2>
+  <p>Choose <span class="path">Injections</span> as the record type, the delimiter your file uses (comma, semicolon or tab), then <span class="path">Choose CSV</span>. Vialog matches columns with familiar names, such as date, amount, unit, site and note, by itself; check each one under <span class="path">Match columns</span> and change any it got wrong, or set a column to <span class="path">Not mapped</span>.</p>
+  <p>Records go into one routine at a time. Pick it under <span class="path">Import into routine</span>, or tap <span class="path">Create a routine</span> to make it there and then. If one file holds several routines, map the column that names them as <span class="path">Source routine</span> and choose which one this import takes; run the import again for the next.</p>
+
+  <h2>Checking before anything is saved</h2>
+  <p><span class="path">Preview import</span> shows how many rows are valid, any errors with the row they are on, how many records are new, and how many match a record already there and will be skipped. The first 20 rows are shown in full. Nothing is imported while any row has an error: correct the file or the matched columns and preview again. Then tap <span class="path">Import reviewed records</span>.</p>
+  <p>Because matching records are skipped, importing the same file twice adds nothing the second time. An injection you removed in Vialog is not brought back by importing it again.</p>
+
+  <h2>What an import does not do</h2>
+  <ul>
+    <li>Imported injections are historical records. They do not mark a scheduled entry as recorded.</li>
+    <li>They do not count down the amount on hand.</li>
+    <li>They leave every record already in Vialog as it is.</li>
+  </ul>
+
+  <h2>Body measurements</h2>
+  <p>Weight, body fat and lean mass come in the same way with <span class="path">Body measurements</span> as the record type. A <strong>Type</strong> column says which each row is; without one, every row is a weight. Units are <span class="path">kg</span> or <span class="path">lb</span> for weight and lean mass, and <span class="path">%</span> for body fat. If you share body measurements with Health, imported ones are shared too; readings that came from Health in the first place are left out.</p>
+
+  <div class="card">
+    <p class="standing">Vialog is a personal record. It keeps what you bring in as you wrote it, and does not recommend a product, an amount or any change to your routine.</p>
+  </div>
+
+  <footer>
+    <a href="./">More help</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help&amp;mt=8">Vialog on the App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><strong lang="en">English</strong> · <a href="../de/help/import-from-spreadsheet.html" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/help/import-from-spreadsheet.html" hreflang="it" lang="it">Italiano</a> · <a href="../nl/help/import-from-spreadsheet.html" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/help/import-from-spreadsheet.html" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/help/import-from-spreadsheet.html" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

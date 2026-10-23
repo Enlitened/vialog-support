@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>スプレッドシートの注射記録をVialogに移す — Vialogヘルプ</title>
+<meta name="description" content="スプレッドシートや別のアプリで付けた注射記録をiPhoneのVialogに移す方法。CSVで書き出し、列を対応付け、プレビューで確認して読み込みます。">
+<link rel="canonical" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../../icon-256.png">
+<link rel="apple-touch-icon" href="../../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="スプレッドシートの注射記録をVialogに移す">
+<meta property="og:description" content="スプレッドシートや別のアプリのCSVを、列を対応付けてプレビューで確認し、読み込みます。">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/ja/" },
+    { "@type": "ListItem", "position": 2, "name": "ヘルプ", "item": "https://vialog.club/ja/help/" },
+    { "@type": "ListItem", "position": 3, "name": "スプレッドシートの注射記録をVialogに移す", "item": "https://vialog.club/ja/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">ヘルプ</a></nav>
+
+  <h1>スプレッドシートの注射記録をVialogに移す</h1>
+  <p class="lede">注射の記録をスプレッドシート、紙の記録を打ち直したファイル、CSVを書き出せる別のアプリで付けてきた場合は、その記録をVialogに取り込めます。列の対応はご自身で指定し、何かが保存される前にすべての行を確認できます。読み込みは無料です。</p>
+
+  <p>読み込みは<span class="path">設定 › 書き出し、バックアップ、削除 › CSVから履歴を読み込む</span>にあります。ようこそ画面の<span class="path">バックアップを復元または履歴を読み込む</span>からも使えます。Vialogを使っている別のiPhoneからすべてを移す場合は、バックアップから復元してください。読み込みは、ほかの場所で付けてきた記録のためのものです。</p>
+
+  <h2>ファイルを準備する</h2>
+  <p>Numbers、Excel、GoogleスプレッドシートはどれもシートをCSVとして保存できます。1行が1件の記録で、最初の行に列名を入れます。Vialogに必要な列は3つで、ほかにいくつかの列も使えます。</p>
+  <ul>
+    <li><strong>日時</strong>：タイムゾーン付きで、<span class="path">2026-09-01T08:00:00+10:00</span>の形式で入れます。時刻のない日付や、タイムゾーンのない時刻は、推測せずに受け付けません。現在より後の日時も同様です。</li>
+    <li><strong>量</strong>：記録した数値を、書いたとおりに入れます。シートで<span class="path">0.5</span>ではなく<span class="path">0,5</span>と書いている場合は、<span class="path">量の小数点にはコンマを使用</span>をオンにします。</li>
+    <li><strong>単位</strong>：<span class="path">mg</span>、<span class="path">mcg</span>、<span class="path">mL</span>、<span class="path">IU</span>、またはデバイス自体の目盛りを表す<span class="path">device</span>です。<span class="path">device</span>の場合は、どのデバイスかを示す<strong>デバイスの説明</strong>の列も入れます。</li>
+    <li><strong>部位</strong>と<strong>メモ</strong>：どちらも任意です。</li>
+  </ul>
+  <p>換算は一切行いません。Vialogのほかの記録と同じく、記録はその行の量と単位のまま取り込まれます。1つのファイルに入れられるのは最大5,000行で、サイズは2 MB未満にする必要があります。</p>
+
+  <h2>列を対応付ける</h2>
+  <p>記録の種類として<span class="path">注射</span>を選び、ファイルで使っている区切り文字（コンマ、セミコロン、タブ）を選んでから、<span class="path">CSVを選択</span>をタップします。日付、量、単位、部位、メモなど、よくある名前の列はVialogが自動で対応付けます。<span class="path">列の対応付け</span>で1つずつ確認し、違っているものは変更するか、<span class="path">対応なし</span>に設定してください。</p>
+  <p>記録は1回につき1つのルーティンに取り込みます。<span class="path">読み込み先のルーティン</span>で選ぶか、<span class="path">ルーティンを作成</span>をタップしてその場で作成します。1つのファイルに複数のルーティンが入っている場合は、ルーティン名の列を<span class="path">読み込み元のルーティン</span>に対応付け、今回取り込むものを選びます。次のルーティンは、もう一度読み込みを行います。</p>
+
+  <h2>保存する前に確認する</h2>
+  <p><span class="path">読み込みをプレビュー</span>では、有効な行の数、エラーとそれがある行、新しい記録の数、すでにある記録と一致するためスキップされる記録の数が表示されます。最初の20行は内容がすべて表示されます。エラーのある行が1つでもあるあいだは、何も読み込まれません。ファイルか列の対応付けを直して、もう一度プレビューしてください。そのあと<span class="path">確認した記録を読み込む</span>をタップします。</p>
+  <p>一致する記録はスキップされるため、同じファイルを2回読み込んでも、2回目には何も追加されません。Vialogで削除した注射は、もう一度読み込んでも戻りません。</p>
+
+  <h2>読み込みで行われないこと</h2>
+  <ul>
+    <li>読み込んだ注射は過去の記録です。予定を記録済みにすることはありません。</li>
+    <li>手元の量は減りません。</li>
+    <li>Vialogにすでにある記録はそのまま残ります。</li>
+  </ul>
+
+  <h2>体の測定値</h2>
+  <p>体重、体脂肪、除脂肪量も、記録の種類に<span class="path">体の測定値</span>を選べば同じ方法で取り込めます。各行がどれにあたるかは<strong>種類</strong>の列で示します。この列がない場合は、すべての行が体重になります。単位は、体重と除脂肪量が<span class="path">kg</span>または<span class="path">lb</span>、体脂肪が<span class="path">%</span>です。体の測定値をヘルスケアと共有している場合は、読み込んだものも共有されます。もともとヘルスケアから来た測定値は読み込まれません。</p>
+
+  <div class="card">
+    <p class="standing">Vialogは個人的な記録です。取り込んだ内容は書かれたとおりに保存し、製品や量、ルーティンの変更を推奨することはありません。</p>
+  </div>
+
+  <footer>
+    <a href="./">その他のヘルプ</a> · <a href="../../privacy.html">プライバシーポリシー</a>（英語） · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help-ja&amp;l=ja&amp;mt=8">App StoreのVialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../../help/import-from-spreadsheet.html" hreflang="en" lang="en">English</a> · <a href="../../de/help/import-from-spreadsheet.html" hreflang="de" lang="de">Deutsch</a> · <a href="../../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../../it/help/import-from-spreadsheet.html" hreflang="it" lang="it">Italiano</a> · <a href="../../nl/help/import-from-spreadsheet.html" hreflang="nl" lang="nl">Nederlands</a> · <strong lang="ja">日本語</strong> · <a href="../../ko/help/import-from-spreadsheet.html" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

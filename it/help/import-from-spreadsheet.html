@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Importare il registro delle iniezioni da un foglio di calcolo – Aiuto di Vialog</title>
+<meta name="description" content="Porta in Vialog su iPhone il registro delle iniezioni di un foglio di calcolo o di un'altra app: esportalo in CSV, associa le colonne, controlla, importa.">
+<link rel="canonical" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../../icon-256.png">
+<link rel="apple-touch-icon" href="../../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Importare il registro delle iniezioni da un foglio di calcolo">
+<meta property="og:description" content="Un CSV da un foglio di calcolo o da un'altra app, con le colonne associate, controllato in anteprima e poi importato.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/it/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/it/" },
+    { "@type": "ListItem", "position": 2, "name": "Aiuto", "item": "https://vialog.club/it/help/" },
+    { "@type": "ListItem", "position": 3, "name": "Importare il registro delle iniezioni da un foglio di calcolo", "item": "https://vialog.club/it/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">Aiuto</a></nav>
+
+  <h1>Importare il registro delle iniezioni da un foglio di calcolo</h1>
+  <p class="lede">Se hai annotato le tue iniezioni in un foglio di calcolo, su carta poi trascritta o in un'altra app che esporta CSV, Vialog può portare dentro quelle registrazioni. Associ tu le colonne, vedi ogni riga prima che venga salvato qualsiasi cosa, e l'importazione è gratuita.</p>
+
+  <p>L'importazione è in <span class="path">Impostazioni › Esportazione, backup ed eliminazione › Importa cronologia da CSV</span>. La schermata di benvenuto la offre anche, in <span class="path">Ripristina backup o importa cronologia</span>. Per spostare tutto da un altro iPhone che ha già Vialog, ripristina invece un backup; l'importazione serve per le registrazioni tenute altrove.</p>
+
+  <h2>Preparare il file</h2>
+  <p>Numbers, Excel e Fogli Google possono salvare un foglio come CSV. Ogni riga è una registrazione; la prima riga contiene i nomi delle colonne. Vialog ha bisogno di tre colonne e ne accetta qualcuna in più:</p>
+  <ul>
+    <li><strong>Data e ora</strong>, con il fuso orario, nella forma <span class="path">2026-09-01T08:00:00+10:00</span>. Una data senza ora, o un'ora senza fuso, viene rifiutata invece che indovinata, e lo stesso vale per una data successiva a adesso.</li>
+    <li><strong>Quantità</strong>, il numero che hai annotato, esattamente come è scritto. Se il tuo foglio scrive <span class="path">0,5</span> invece di <span class="path">0.5</span>, attiva <span class="path">Le quantità usano la virgola decimale</span>.</li>
+    <li><strong>Unità</strong>: <span class="path">mg</span>, <span class="path">mcg</span>, <span class="path">mL</span>, <span class="path">IU</span> o <span class="path">device</span> per le tacche di un dispositivo, con una colonna <strong>Descrizione del dispositivo</strong> che dica quale.</li>
+    <li><strong>Sito</strong> e <strong>Nota</strong>, entrambe facoltative.</li>
+  </ul>
+  <p>Non viene convertito nulla. Una registrazione entra con la quantità e l'unità indicate dalla sua riga, come ogni registrazione in Vialog. Un file può contenere fino a 5.000 righe e deve essere più piccolo di 2 MB.</p>
+
+  <h2>Associare le colonne</h2>
+  <p>Scegli <span class="path">Iniezioni</span> come tipo di registrazione, il separatore usato dal file (virgola, punto e virgola o tabulazione), poi <span class="path">Scegli CSV</span>. Vialog associa da solo le colonne con nomi familiari, come data, quantità, unità, sito e nota; controlla ciascuna in <span class="path">Associa colonne</span> e cambia quelle sbagliate, oppure imposta una colonna su <span class="path">Non associata</span>.</p>
+  <p>Le registrazioni entrano in una routine alla volta. Sceglila in <span class="path">Importa nella routine</span>, oppure tocca <span class="path">Crea una routine</span> per crearla sul momento. Se un file contiene più routine, associa la colonna che le nomina come <span class="path">Routine di origine</span> e scegli quale prende questa importazione; ripeti l'importazione per la successiva.</p>
+
+  <h2>Controllare prima di salvare qualsiasi cosa</h2>
+  <p><span class="path">Anteprima importazione</span> mostra quante righe sono valide, gli eventuali errori con la riga in cui si trovano, quante registrazioni sono nuove e quante corrispondono a una registrazione già presente e verranno ignorate. Le prime 20 righe sono mostrate per intero. Non viene importato nulla finché una riga contiene un errore: correggi il file o le colonne associate e guarda di nuovo l'anteprima. Poi tocca <span class="path">Importa le registrazioni controllate</span>.</p>
+  <p>Poiché le registrazioni corrispondenti vengono ignorate, importare due volte lo stesso file non aggiunge nulla la seconda volta. Un'iniezione che hai eliminato in Vialog non ritorna se la importi di nuovo.</p>
+
+  <h2>Cosa non fa un'importazione</h2>
+  <ul>
+    <li>Le iniezioni importate sono registrazioni storiche. Non segnano come registrata nessuna somministrazione prevista.</li>
+    <li>Non scalano la quantità disponibile.</li>
+    <li>Lasciano com'è ogni registrazione già presente in Vialog.</li>
+  </ul>
+
+  <h2>Misurazioni corporee</h2>
+  <p>Peso, massa grassa e massa magra entrano allo stesso modo, con <span class="path">Misurazioni corporee</span> come tipo di registrazione. Una colonna <strong>Tipo</strong> indica cos'è ogni riga; senza, ogni riga è un peso. Le unità sono <span class="path">kg</span> o <span class="path">lb</span> per il peso e la massa magra, e <span class="path">%</span> per la massa grassa. Se condividi le misurazioni corporee con Salute, anche quelle importate vengono condivise; le letture arrivate in origine da Salute restano fuori.</p>
+
+  <div class="card">
+    <p class="standing">Vialog è un registro personale. Conserva ciò che porti così come l'hai scritto, e non consiglia un prodotto, una quantità né alcuna modifica alla tua routine.</p>
+  </div>
+
+  <footer>
+    <a href="./">Altro aiuto</a> · <a href="../../privacy.html">Informativa sulla privacy</a> (in inglese) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help-it&amp;l=it&amp;mt=8">Vialog su App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../../help/import-from-spreadsheet.html" hreflang="en" lang="en">English</a> · <a href="../../de/help/import-from-spreadsheet.html" hreflang="de" lang="de">Deutsch</a> · <a href="../../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <strong lang="it">Italiano</strong> · <a href="../../nl/help/import-from-spreadsheet.html" hreflang="nl" lang="nl">Nederlands</a> · <a href="../../ja/help/import-from-spreadsheet.html" hreflang="ja" lang="ja">日本語</a> · <a href="../../ko/help/import-from-spreadsheet.html" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

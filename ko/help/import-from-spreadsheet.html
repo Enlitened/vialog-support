@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>스프레드시트의 주사 기록을 Vialog로 옮기기 — Vialog 도움말</title>
+<meta name="description" content="스프레드시트나 다른 앱에 남긴 주사 기록을 iPhone의 Vialog로 옮기세요. CSV로 내보내고, 열을 연결하고, 미리 보기로 확인한 뒤 가져옵니다.">
+<link rel="canonical" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../../icon-256.png">
+<link rel="apple-touch-icon" href="../../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="스프레드시트의 주사 기록을 Vialog로 옮기기">
+<meta property="og:description" content="스프레드시트나 다른 앱의 CSV를 열을 연결하고 미리 보기로 확인한 뒤 가져옵니다.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/ko/" },
+    { "@type": "ListItem", "position": 2, "name": "도움말", "item": "https://vialog.club/ko/help/" },
+    { "@type": "ListItem", "position": 3, "name": "스프레드시트의 주사 기록을 Vialog로 옮기기", "item": "https://vialog.club/ko/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">도움말</a></nav>
+
+  <h1>스프레드시트의 주사 기록을 Vialog로 옮기기</h1>
+  <p class="lede">주사 기록을 스프레드시트, 종이 기록을 옮겨 적은 파일, CSV를 내보낼 수 있는 다른 앱에 남겨 왔다면 그 기록을 Vialog로 들여올 수 있습니다. 열은 직접 연결하고, 무엇이든 저장되기 전에 모든 행을 확인하며, 가져오기는 무료입니다.</p>
+
+  <p>가져오기는 <span class="path">설정 › 내보내기, 백업 및 삭제 › CSV에서 기록 가져오기</span>에 있습니다. 시작 화면의 <span class="path">백업 복원 또는 기록 가져오기</span>에서도 할 수 있습니다. Vialog를 이미 쓰고 있는 다른 iPhone에서 모든 것을 옮기려면 백업을 복원하세요. 가져오기는 다른 곳에 남겨 온 기록을 위한 것입니다.</p>
+
+  <h2>파일 준비하기</h2>
+  <p>Numbers, Excel, Google Sheets 모두 시트를 CSV로 저장할 수 있습니다. 한 행이 기록 하나이고, 첫 행에는 열 이름이 들어갑니다. Vialog에는 열 세 개가 필요하며, 몇 개를 더 쓸 수 있습니다.</p>
+  <ul>
+    <li><strong>날짜 및 시각</strong>: 시간대를 포함해 <span class="path">2026-09-01T08:00:00+10:00</span> 형식으로 씁니다. 시각이 없는 날짜나 시간대가 없는 시각은 추측하지 않고 거부하며, 지금보다 늦은 날짜도 마찬가지입니다.</li>
+    <li><strong>양</strong>: 기록한 숫자를 적힌 그대로 씁니다. 시트에 <span class="path">0.5</span>가 아니라 <span class="path">0,5</span>로 적혀 있다면 <span class="path">소수점으로 쉼표 사용</span>을 켜세요.</li>
+    <li><strong>단위</strong>: <span class="path">mg</span>, <span class="path">mcg</span>, <span class="path">mL</span>, <span class="path">IU</span>, 또는 기기 자체의 눈금을 뜻하는 <span class="path">device</span>이며, <span class="path">device</span>일 때는 어떤 기기인지 적는 <strong>기기 설명</strong> 열을 함께 둡니다.</li>
+    <li><strong>부위</strong>와 <strong>메모</strong>: 둘 다 선택 사항입니다.</li>
+  </ul>
+  <p>아무것도 환산하지 않습니다. Vialog의 모든 기록과 마찬가지로, 기록은 그 행에 적힌 양과 단위 그대로 들어옵니다. 파일 하나에는 최대 5,000행까지 담을 수 있고, 크기는 2 MB보다 작아야 합니다.</p>
+
+  <h2>열 연결하기</h2>
+  <p>기록 유형으로 <span class="path">주사</span>를 고르고, 파일이 쓰는 구분자(쉼표, 세미콜론, 탭)를 고른 다음 <span class="path">CSV 선택</span>을 탭하세요. 날짜, 양, 단위, 부위, 메모처럼 흔한 이름의 열은 Vialog가 알아서 연결합니다. <span class="path">열 연결</span>에서 하나씩 확인하고 잘못 연결된 것은 바꾸거나, 열을 <span class="path">연결 안 됨</span>으로 두세요.</p>
+  <p>기록은 한 번에 루틴 하나로 들어갑니다. <span class="path">가져올 루틴</span>에서 고르거나, <span class="path">루틴 만들기</span>를 탭해 그 자리에서 만드세요. 파일 하나에 여러 루틴이 들어 있다면 루틴 이름이 적힌 열을 <span class="path">원본 루틴</span>으로 연결하고, 이번에 가져올 루틴을 고르세요. 다음 루틴은 가져오기를 다시 실행하면 됩니다.</p>
+
+  <h2>저장하기 전에 확인하기</h2>
+  <p><span class="path">가져오기 미리 보기</span>는 유효한 행 수, 오류와 그 오류가 있는 행, 새 기록 수, 이미 있는 기록과 일치해 건너뛸 기록 수를 보여 줍니다. 처음 20행은 내용이 모두 표시됩니다. 오류가 있는 행이 하나라도 있으면 아무것도 가져오지 않습니다. 파일이나 연결한 열을 고친 뒤 다시 미리 보세요. 그런 다음 <span class="path">검토한 기록 가져오기</span>를 탭하세요.</p>
+  <p>일치하는 기록은 건너뛰므로, 같은 파일을 두 번 가져와도 두 번째에는 아무것도 추가되지 않습니다. Vialog에서 삭제한 주사는 다시 가져와도 되돌아오지 않습니다.</p>
+
+  <h2>가져오기가 하지 않는 일</h2>
+  <ul>
+    <li>가져온 주사는 지난 기록입니다. 예정 항목을 기록한 것으로 표시하지 않습니다.</li>
+    <li>보유량을 줄이지 않습니다.</li>
+    <li>Vialog에 이미 있는 기록은 그대로 둡니다.</li>
+  </ul>
+
+  <h2>신체 측정</h2>
+  <p>체중, 체지방, 제지방량도 기록 유형으로 <span class="path">신체 측정</span>을 고르면 같은 방법으로 들어옵니다. 각 행이 무엇인지는 <strong>유형</strong> 열로 나타내며, 이 열이 없으면 모든 행이 체중이 됩니다. 단위는 체중과 제지방량이 <span class="path">kg</span> 또는 <span class="path">lb</span>, 체지방이 <span class="path">%</span>입니다. 신체 측정을 건강과 공유하고 있다면 가져온 측정도 공유됩니다. 처음부터 건강에서 온 측정값은 제외됩니다.</p>
+
+  <div class="card">
+    <p class="standing">Vialog는 개인 기록입니다. 들여온 내용을 적힌 그대로 보관하며, 제품이나 양, 루틴의 어떤 변경도 권하지 않습니다.</p>
+  </div>
+
+  <footer>
+    <a href="./">도움말 더 보기</a> · <a href="../../privacy.html">개인정보 처리방침</a>(영어) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help-ko&amp;l=ko&amp;mt=8">App Store의 Vialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../../help/import-from-spreadsheet.html" hreflang="en" lang="en">English</a> · <a href="../../de/help/import-from-spreadsheet.html" hreflang="de" lang="de">Deutsch</a> · <a href="../../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../../it/help/import-from-spreadsheet.html" hreflang="it" lang="it">Italiano</a> · <a href="../../nl/help/import-from-spreadsheet.html" hreflang="nl" lang="nl">Nederlands</a> · <a href="../../ja/help/import-from-spreadsheet.html" hreflang="ja" lang="ja">日本語</a> · <strong lang="ko">한국어</strong></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

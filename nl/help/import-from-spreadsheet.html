@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Je injectielogboek uit een spreadsheet overzetten – Vialog-help</title>
+<meta name="description" content="Haal een injectielogboek uit een spreadsheet of andere app naar Vialog op je iPhone: exporteer het als CSV, koppel de kolommen, controleer en importeer.">
+<link rel="canonical" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../../icon-256.png">
+<link rel="apple-touch-icon" href="../../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Je injectielogboek uit een spreadsheet overzetten">
+<meta property="og:description" content="Een CSV uit een spreadsheet of andere app, met gekoppelde kolommen, gecontroleerd in een voorbeeld en dan geïmporteerd.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/nl/" },
+    { "@type": "ListItem", "position": 2, "name": "Help", "item": "https://vialog.club/nl/help/" },
+    { "@type": "ListItem", "position": 3, "name": "Je injectielogboek uit een spreadsheet overzetten", "item": "https://vialog.club/nl/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">Help</a></nav>
+
+  <h1>Je injectielogboek uit een spreadsheet overzetten</h1>
+  <p class="lede">Heb je je injecties bijgehouden in een spreadsheet, op papier dat je hebt uitgetypt, of in een andere app die CSV kan exporteren? Dan kan Vialog die registraties binnenhalen. Je koppelt de kolommen zelf, ziet elke rij voordat er iets wordt bewaard, en importeren is gratis.</p>
+
+  <p>Importeren vind je in <span class="path">Instellingen › Export, reservekopie en verwijderen › Importeer geschiedenis uit CSV</span>. Het welkomstscherm biedt het ook aan, onder <span class="path">Herstel reservekopie of importeer geschiedenis</span>. Wil je alles overzetten van een andere iPhone waarop Vialog al staat, herstel dan een reservekopie; importeren is voor registraties die je ergens anders hebt bijgehouden.</p>
+
+  <h2>Het bestand klaarmaken</h2>
+  <p>Numbers, Excel en Google Spreadsheets kunnen allemaal een blad als CSV bewaren. Elke rij is één registratie; de eerste rij bevat de kolomnamen. Vialog heeft drie kolommen nodig en kan er nog een paar gebruiken:</p>
+  <ul>
+    <li><strong>Datum en tijd</strong>, met de tijdzone, in de vorm <span class="path">2026-09-01T08:00:00+10:00</span>. Een datum zonder tijd, of een tijd zonder zone, wordt geweigerd in plaats van geraden, en een datum later dan nu ook.</li>
+    <li><strong>Hoeveelheid</strong>, het getal dat je hebt geregistreerd, precies zoals het er staat. Schrijft je blad <span class="path">0,5</span> in plaats van <span class="path">0.5</span>, zet dan <span class="path">Hoeveelheden gebruiken een decimale komma</span> aan.</li>
+    <li><strong>Eenheid</strong>: <span class="path">mg</span>, <span class="path">mcg</span>, <span class="path">mL</span>, <span class="path">IU</span> of <span class="path">device</span> voor de eigen streepjes van een hulpmiddel, met een kolom <strong>Beschrijving hulpmiddel</strong> die zegt welk hulpmiddel.</li>
+    <li><strong>Plek</strong> en <strong>Notitie</strong>, allebei optioneel.</li>
+  </ul>
+  <p>Er wordt niets omgerekend. Een registratie komt binnen met de hoeveelheid en eenheid die de rij geeft, zoals elke registratie in Vialog. Een bestand mag tot 5.000 rijen bevatten en moet kleiner zijn dan 2 MB.</p>
+
+  <h2>De kolommen koppelen</h2>
+  <p>Kies <span class="path">Injecties</span> als registratietype, het scheidingsteken dat je bestand gebruikt (komma, puntkomma of tab), en daarna <span class="path">Kies CSV</span>. Vialog koppelt kolommen met bekende namen, zoals datum, hoeveelheid, eenheid, plek en notitie, zelf; controleer ze allemaal onder <span class="path">Koppel kolommen</span> en verander wat niet klopt, of zet een kolom op <span class="path">Niet gekoppeld</span>.</p>
+  <p>Registraties gaan steeds in één routine. Kies die onder <span class="path">Importeer in routine</span>, of tik op <span class="path">Maak een routine</span> om hem ter plekke te maken. Staan er in één bestand meerdere routines, koppel dan de kolom met hun namen als <span class="path">Bronroutine</span> en kies welke deze import meeneemt; importeer daarna opnieuw voor de volgende.</p>
+
+  <h2>Controleren voordat er iets wordt bewaard</h2>
+  <p><span class="path">Bekijk import</span> toont hoeveel rijen geldig zijn, eventuele fouten met de rij waarop ze staan, hoeveel registraties nieuw zijn, en hoeveel overeenkomen met een registratie die er al is en worden overgeslagen. De eerste 20 rijen worden volledig getoond. Er wordt niets geïmporteerd zolang een rij een fout heeft: verbeter het bestand of de gekoppelde kolommen en bekijk de import opnieuw. Tik dan op <span class="path">Importeer gecontroleerde registraties</span>.</p>
+  <p>Omdat overeenkomende registraties worden overgeslagen, voegt hetzelfde bestand een tweede keer importeren niets toe. Een injectie die je in Vialog hebt verwijderd, komt niet terug door hem opnieuw te importeren.</p>
+
+  <h2>Wat een import niet doet</h2>
+  <ul>
+    <li>Geïmporteerde injecties zijn historische registraties. Ze markeren geen gepland moment als geregistreerd.</li>
+    <li>Ze tellen niet af van je voorraad.</li>
+    <li>Ze laten elke registratie die al in Vialog staat zoals die is.</li>
+  </ul>
+
+  <h2>Lichaamsmetingen</h2>
+  <p>Gewicht, vetpercentage en vetvrije massa komen op dezelfde manier binnen, met <span class="path">Lichaamsmetingen</span> als registratietype. Een kolom <strong>Type</strong> zegt wat elke rij is; zonder die kolom is elke rij een gewicht. Eenheden zijn <span class="path">kg</span> of <span class="path">lb</span> voor gewicht en vetvrije massa, en <span class="path">%</span> voor vetpercentage. Deel je lichaamsmetingen met Gezondheid, dan worden geïmporteerde metingen ook gedeeld; metingen die oorspronkelijk uit Gezondheid kwamen, blijven buiten de import.</p>
+
+  <div class="card">
+    <p class="standing">Vialog is een persoonlijk logboek. Het bewaart wat je binnenhaalt zoals je het schreef, en beveelt geen product, hoeveelheid of wijziging van je routine aan.</p>
+  </div>
+
+  <footer>
+    <a href="./">Meer hulp</a> · <a href="../../privacy.html">Privacybeleid</a> (in het Engels) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help-nl&amp;l=nl&amp;mt=8">Vialog in de App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../../help/import-from-spreadsheet.html" hreflang="en" lang="en">English</a> · <a href="../../de/help/import-from-spreadsheet.html" hreflang="de" lang="de">Deutsch</a> · <a href="../../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../../it/help/import-from-spreadsheet.html" hreflang="it" lang="it">Italiano</a> · <strong lang="nl">Nederlands</strong> · <a href="../../ja/help/import-from-spreadsheet.html" hreflang="ja" lang="ja">日本語</a> · <a href="../../ko/help/import-from-spreadsheet.html" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

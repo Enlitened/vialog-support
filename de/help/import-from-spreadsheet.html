@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Ein Injektionsprotokoll aus einer Tabelle übernehmen – Vialog-Hilfe</title>
+<meta name="description" content="Übernimm ein Injektionsprotokoll aus einer Tabelle oder einer anderen App in Vialog: als CSV exportieren, Spalten zuordnen, Vorschau prüfen, importieren.">
+<link rel="canonical" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/help/import-from-spreadsheet.html">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/help/import-from-spreadsheet.html">
+<!-- /languages:head -->
+<link rel="icon" href="../../icon-256.png">
+<link rel="apple-touch-icon" href="../../icon-256.png">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ein Injektionsprotokoll aus einer Tabelle übernehmen">
+<meta property="og:description" content="Eine CSV-Datei aus einer Tabelle oder einer anderen App, die Spalten zugeordnet, in einer Vorschau geprüft und dann importiert.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/de/help/import-from-spreadsheet.html">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3. Checked against
+     Vialog/Features/Settings/HistoryImportView.swift and Services/HistoryImport.swift: an import
+     is historical, converts nothing and resolves no scheduled entry. -->
+<link rel="stylesheet" href="../../site.css">
+<!-- crumbs:head -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Vialog", "item": "https://vialog.club/de/" },
+    { "@type": "ListItem", "position": 2, "name": "Hilfe", "item": "https://vialog.club/de/help/" },
+    { "@type": "ListItem", "position": 3, "name": "Ein Injektionsprotokoll aus einer Tabelle übernehmen", "item": "https://vialog.club/de/help/import-from-spreadsheet.html" }
+  ]
+}
+</script>
+<!-- /crumbs:head -->
+</head>
+<body>
+<main>
+  <nav class="crumbs"><a href="../"><img src="../../icon-256.png" alt=""></a><a href="../">Vialog</a> › <a href="./">Hilfe</a></nav>
+
+  <h1>Ein Injektionsprotokoll aus einer Tabelle übernehmen</h1>
+  <p class="lede">Wenn du deine Injektionen in einer Tabelle festgehalten hast, auf Papier und dann abgetippt, oder in einer anderen App, die CSV exportiert, kann Vialog diese Aufzeichnungen übernehmen. Du ordnest die Spalten selbst zu, siehst jede Zeile, bevor etwas gesichert wird, und der Import ist kostenlos.</p>
+
+  <p>Den Import findest du unter <span class="path">Einstellungen › Export, Backup und Löschen › Frühere Daten aus CSV importieren</span>. Auch der Willkommensbildschirm bietet ihn an, unter <span class="path">Backup wiederherstellen oder Daten importieren</span>. Um alles von einem anderen iPhone zu übernehmen, auf dem Vialog schon läuft, stellst du stattdessen ein Backup wieder her; der Import ist für Aufzeichnungen, die woanders geführt wurden.</p>
+
+  <h2>Die Datei vorbereiten</h2>
+  <p>Numbers, Excel und Google Tabellen können eine Tabelle als CSV speichern. Jede Zeile ist eine Aufzeichnung; die erste Zeile enthält die Spaltennamen. Vialog braucht drei Spalten und kann ein paar weitere übernehmen:</p>
+  <ul>
+    <li><strong>Datum und Uhrzeit</strong>, mit Zeitzone, in der Form <span class="path">2026-09-01T08:00:00+10:00</span>. Ein Datum ohne Uhrzeit oder eine Uhrzeit ohne Zeitzone wird abgelehnt statt geraten, ebenso ein Datum nach jetzt.</li>
+    <li><strong>Menge</strong>, die Zahl, die du erfasst hast, genau so, wie sie dasteht. Schreibt deine Tabelle <span class="path">0,5</span> statt <span class="path">0.5</span>, schalte <span class="path">Mengen verwenden ein Dezimalkomma</span> ein.</li>
+    <li><strong>Einheit</strong>: <span class="path">mg</span>, <span class="path">mcg</span>, <span class="path">mL</span>, <span class="path">IU</span> oder <span class="path">device</span> für die Skalenstriche eines Geräts, mit einer Spalte <strong>Gerätebeschreibung</strong>, die sagt, welches Gerät.</li>
+    <li><strong>Stelle</strong> und <strong>Notiz</strong>, beide optional.</li>
+  </ul>
+  <p>Nichts wird umgerechnet. Eine Aufzeichnung kommt mit der Menge und Einheit herein, die ihre Zeile angibt, wie jede Aufzeichnung in Vialog. Eine Datei kann bis zu 5.000 Zeilen enthalten und muss kleiner als 2 MB sein.</p>
+
+  <h2>Die Spalten zuordnen</h2>
+  <p>Wähle <span class="path">Injektionen</span> als Aufzeichnungsart, das <span class="path">Trennzeichen</span> deiner Datei (<span class="path">Komma</span>, <span class="path">Semikolon</span> oder <span class="path">Tabulator</span>) und dann <span class="path">CSV wählen</span>. Spalten mit vertrauten Namen wie Datum, Menge, Einheit, Stelle und Notiz ordnet Vialog von selbst zu; prüfe jede unter <span class="path">Spalten zuordnen</span> und ändere, was nicht stimmt, oder setze eine Spalte auf <span class="path">Nicht zugeordnet</span>.</p>
+  <p>Aufzeichnungen kommen jeweils in eine Routine. Wähle sie unter <span class="path">In Routine importieren</span>, oder tippe auf <span class="path">Routine erstellen</span>, um sie gleich dort anzulegen. Enthält eine Datei mehrere Routinen, ordne die Spalte, die sie benennt, als <span class="path">Quellroutine</span> zu und wähle, welche dieser Import übernimmt; für die nächste importierst du noch einmal.</p>
+
+  <h2>Prüfen, bevor etwas gesichert wird</h2>
+  <p><span class="path">Import-Vorschau</span> zeigt, wie viele Zeilen gültig sind, jeden Fehler mit seiner Zeile, wie viele Aufzeichnungen neu sind und wie viele einer schon vorhandenen entsprechen und übersprungen werden. Die ersten 20 Zeilen siehst du vollständig. Solange eine Zeile einen Fehler hat, wird nichts importiert: Korrigiere die Datei oder die Zuordnung und sieh dir die Vorschau noch einmal an. Tippe dann auf <span class="path">Geprüfte Aufzeichnungen importieren</span>.</p>
+  <p>Weil übereinstimmende Aufzeichnungen übersprungen werden, fügt derselbe Import beim zweiten Mal nichts hinzu. Eine Injektion, die du in Vialog entfernt hast, kommt durch einen erneuten Import nicht zurück.</p>
+
+  <h2>Was ein Import nicht tut</h2>
+  <ul>
+    <li>Importierte Injektionen sind frühere Aufzeichnungen. Sie markieren keinen geplanten Eintrag als erfasst.</li>
+    <li>Sie ziehen nichts vom Bestand ab.</li>
+    <li>Jede Aufzeichnung, die schon in Vialog ist, bleibt, wie sie ist.</li>
+  </ul>
+
+  <h2>Körpermessungen</h2>
+  <p>Gewicht, Körperfett und Magermasse kommen auf dieselbe Weise herein, mit <span class="path">Körpermessungen</span> als Aufzeichnungsart. Eine Spalte <strong>Typ</strong> sagt, was jede Zeile ist; ohne sie ist jede Zeile ein Gewicht. Die Einheiten sind <span class="path">kg</span> oder <span class="path">lb</span> für Gewicht und Magermasse und <span class="path">%</span> für Körperfett. Wenn du Körpermessungen mit Health teilst, werden importierte ebenfalls geteilt; Werte, die ursprünglich aus Health stammen, bleiben außen vor.</p>
+
+  <div class="card">
+    <p class="standing">Vialog ist eine persönliche Aufzeichnung. Es übernimmt, was du hereinbringst, so wie du es geschrieben hast, und empfiehlt kein Produkt, keine Menge und keine Änderung deiner Routine.</p>
+  </div>
+
+  <footer>
+    <a href="./">Weitere Hilfe</a> · <a href="../../privacy.html">Datenschutzrichtlinie</a> (auf Englisch) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-help-de&amp;l=de&amp;mt=8">Vialog im App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../../help/import-from-spreadsheet.html" hreflang="en" lang="en">English</a> · <strong lang="de">Deutsch</strong> · <a href="../../fr/help/import-from-spreadsheet.html" hreflang="fr" lang="fr">Français</a> · <a href="../../es/help/import-from-spreadsheet.html" hreflang="es" lang="es">Español (España)</a> · <a href="../../es-419/help/import-from-spreadsheet.html" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../../pt-br/help/import-from-spreadsheet.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../../it/help/import-from-spreadsheet.html" hreflang="it" lang="it">Italiano</a> · <a href="../../nl/help/import-from-spreadsheet.html" hreflang="nl" lang="nl">Nederlands</a> · <a href="../../ja/help/import-from-spreadsheet.html" hreflang="ja" lang="ja">日本語</a> · <a href="../../ko/help/import-from-spreadsheet.html" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>
