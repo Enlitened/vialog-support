@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://vialog.club/</loc><lastmod>2026-10-23</lastmod></url>
-  <url><loc>https://vialog.club/privacy.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://vialog.club/help/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://vialog.club/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://vialog.club/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://vialog.club/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://vialog.club/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://vialog.club/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/privacy.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/de/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/fr/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/es-419/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/pt-br/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/it/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/nl/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ja/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/injection-site-log.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/reminders.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/apple-watch.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/export-for-appointment.html</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://vialog.club/ko/help/no-server.html</loc><lastmod>2026-10-23</lastmod></url>
 </urlset>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog – un diario privato per la tua routine di iniezioni</title>
+<meta name="description" content="Programma, registrazioni, siti e note delle tue iniezioni su iPhone. Nessun account, nessuna analisi, nessun server: nulla esce se non lo esporti tu.">
+<link rel="canonical" href="https://vialog.club/it/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog – un diario privato per la tua routine di iniezioni">
+<meta property="og:description" content="Programma, registrazioni, siti e note delle tue iniezioni su iPhone. Nessun account, nessuna analisi, nessun server: nulla esce se non lo esporti tu.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/it/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vialog su iPhone: la quantità prevista di una routine nel tempo, e Oggi con le somministrazioni da registrare.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "Un diario privato su iPhone per una routine di iniezioni che segui già: programma, registrazioni, siti, check-in e note, conservati sul tuo dispositivo, senza account e senza server.",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>La tua routine di iniezioni, registrata con le tue parole.</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-it&amp;l=it&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="Scarica Vialog su App Store" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">Gratis. Un acquisto facoltativo, mai un abbonamento.</div>
+  </div>
+
+  <p class="lede">Un diario privato su iPhone per chi segue già una routine di iniezioni: cosa hai usato, quanto, quando, dove e come ti sentivi. Nomi, quantità e programma li porti tu. Vialog ne tiene la registrazione.</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="Oggi: le routine da registrare oggi, la prossima somministrazione e questa settimana" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="Registrare un'iniezione: quantità, ora e sito su un unico foglietto" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="La quantità prevista di una routine nel tempo, con ogni registrazione come punto" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">Un registro personale. Questa app non consiglia prodotti né modifiche al trattamento. Non sceglie nulla, non calcola una dose e non suggerisce modifiche.</p>
+
+  <h2>Cosa fa Vialog</h2>
+  <ul class="plain">
+    <li><strong>Conserva le tue routine.</strong> Dai tu il nome a ciascuna, imposta gli orari e la quantità prevista, nelle unità che usi già. Nulla viene cercato, suggerito o convertito.</li>
+    <li><strong>Ti ricorda.</strong> Un promemoria a ogni orario previsto, consegnato da iOS sul dispositivo. Di base dice solo che hai una somministrazione prevista; nome e quantità della routine compaiono sulla schermata di blocco solo se lo attivi.</li>
+    <li><strong>Registra in pochi secondi.</strong> Conferma la quantità, scegli un sito se vuoi, aggiungi una nota. I siti precedenti restano visibili, così vedi dove hai già registrato.</li>
+    <li><strong>Tiene un diario.</strong> Check-in su energia, sonno e appetito, sintomi con parole tue, misurazioni corporee e risultati di laboratorio, in qualsiasi giorno, separati dalle tue routine a meno che non li colleghi.</li>
+    <li><strong>Mostra la tua cronologia.</strong> Ogni registrazione per giorno, con filtri, e un grafico di ciò che hai registrato nel tempo.</li>
+    <li><strong>Conta ciò che hai, se glielo chiedi.</strong> Inserisci la quantità disponibile e vedi fino a quando copre, scalata dalle tue registrazioni. Indica un conteggio e un giorno; non ti invita mai a procurarti nulla.</li>
+    <li><strong>Viene via con te.</strong> Esporta tutto in CSV o come report PDF (il PDF con Vialog Pro), fai il backup in un unico file, ripristinalo su un nuovo telefono o elimina tutto.</li>
+  </ul>
+
+  <h2>Privato fin dalla progettazione</h2>
+  <p>Nessun account. Nessun accesso. Niente pubblicità, niente analisi, nessun tracciamento. Le tue registrazioni sono conservate sul tuo iPhone, mostrate sul tuo Apple Watch se usi l'app per Watch, e Vialog non ha un server a cui inviarle. Il Blocco app facoltativo chiede Face ID, Touch ID o il codice prima che l'app si apra e mostra una copertura vuota nell'App Switcher. Leggi l'<a href="../privacy.html">informativa sulla privacy</a> (in inglese).</p>
+
+  <h2>Aiuto</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">Tenere un registro dei siti di iniezione</a></li>
+    <li><a href="help/reminders.html">Promemoria adatti alla tua routine</a></li>
+    <li><a href="help/apple-watch.html">Registrare da Apple Watch, widget e Siri</a></li>
+    <li><a href="help/export-for-appointment.html">Portare le tue registrazioni a un appuntamento</a></li>
+    <li><a href="help/no-server.html">Perché Vialog non ha un server</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">Contatti</h2>
+    <p>Domande, segnalazioni di bug e richieste sono tutte benvenute. Scrivi a <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> e riceverai una risposta.</p>
+    <p style="margin:0">È utile indicare la versione di iOS, la versione e la build di Vialog che trovi nelle Impostazioni, e cosa stavi facendo quando qualcosa non ha funzionato.</p>
+  </div>
+
+  <h2 id="questions">Domande frequenti</h2>
+  <dl>
+    <dt>Dove sono conservate le mie registrazioni?</dt>
+    <dd>Sul tuo iPhone, nello spazio di archiviazione dell'app, protetto dal codice del dispositivo. Se fai il backup del telefono su iCloud o su un computer, i dati dell'app fanno parte di quel backup, alle condizioni di Apple. Nulla viene conservato altrove.</dd>
+
+    <dt>Vialog mi dice cosa prendere o quando?</dt>
+    <dd>No. Registra la routine che segui già, nelle quantità e agli orari che inserisci. Non sceglie mai un prodotto, non calcola mai una quantità, non suggerisce mai un sito e non consiglia mai una modifica. Se qualcosa della tua routine dovesse cambiare, è una conversazione da fare con chi te la prescrive.</dd>
+
+    <dt>Cosa è gratuito e cosa aggiunge Vialog Pro?</dt>
+    <dd>Registrazione, promemoria, il diario, la cronologia, i siti, Blocco app, esportazione CSV, backup, ripristino ed eliminazione sono gratuiti e restano tali. Vialog Pro è un acquisto unico, non un abbonamento, e aggiunge quattro cose: più di tre routine attive, la quantità disponibile, Riepilogo (le tue registrazioni su un unico asse temporale per qualsiasi intervallo; gli ultimi 30 giorni restano gratuiti nel Diario) e il report PDF. Tutto ciò che hai già continua a funzionare, che tu lo acquisti o no.</dd>
+
+    <dt>Ho acquistato Vialog Pro. Come lo recupero su un nuovo telefono?</dt>
+    <dd>Apri Impostazioni in Vialog, poi Vialog Pro, e tocca <strong>Ripristina acquisti</strong>, con l'accesso allo stesso Account Apple con cui l'hai acquistato. In famiglia è attivo, quindi anche le persone con cui condividi gli acquisti lo ricevono. Le tue registrazioni sono separate: spostale con un file di backup o tramite un backup dell'iPhone.</dd>
+
+    <dt>Un promemoria non è arrivato.</dt>
+    <dd>I promemoria sono consegnati da iOS e la consegna non è garantita. Controlla che le notifiche per Vialog siano consentite nelle Impostazioni di iOS e che una modalità Full immersion non le stia trattenendo. <strong>Impostazioni › Controlla i promemoria</strong> in Vialog mostra quanti promemoria sono registrati e fino a quale data arrivano.</dd>
+
+    <dt>Perché il promemoria non dice di quale routine si tratta?</dt>
+    <dd>Perché la schermata di blocco può leggerla chiunque veda il telefono. Di base il promemoria dice solo che hai una somministrazione prevista. Se preferisci vedere lì il nome e la quantità della routine, attiva <strong>Mostra nome della routine e quantità</strong> nelle Impostazioni.</dd>
+
+    <dt>Posso modificare o rimuovere una registrazione?</dt>
+    <dd>Sì. Apri la registrazione da Oggi o dal Diario per correggerne quantità, ora, sito o nota, o per rimuoverla. Una somministrazione prevista rimossa torna a “non registrata”. Ogni modifica viene conservata come revisione.</dd>
+
+    <dt>Perché un'unità non viene mai convertita?</dt>
+    <dd>Perché una conversione dipende da una concentrazione che Vialog non conosce e non dovrebbe presumere. Le quantità sono conservate esattamente come le hai digitate, nell'unità che hai scelto, e una registrazione in un'unità diversa viene mostrata come tale invece di essere accorpata.</dd>
+
+    <dt>Come elimino tutto?</dt>
+    <dd>Impostazioni, poi Esportazione, backup ed eliminazione, poi <strong>Elimina tutte le registrazioni</strong>. Anche rimuovere l'app rimuove tutto ciò che ha memorizzato. Non c'è nulla conservato altrove da richiedere.</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">Aiuto</a> · <a href="../privacy.html">Informativa sulla privacy</a> (in inglese) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-it&amp;l=it&amp;mt=8">Vialog su App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <strong lang="it">Italiano</strong> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

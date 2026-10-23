@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog — 注射ルーティンのためのプライベートなジャーナル</title>
+<meta name="description" content="注射のスケジュール、記録、部位、メモをiPhoneに保存。アカウントも分析もサーバもなく、書き出さない限り何も外に出ません。">
+<link rel="canonical" href="https://vialog.club/ja/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog — 注射ルーティンのためのプライベートなジャーナル">
+<meta property="og:description" content="注射のスケジュール、記録、部位、メモをiPhoneに保存。アカウントも分析もサーバもなく、書き出さない限り何も外に出ません。">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/ja/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="iPhoneのVialog：ルーティンの予定量の推移と、記録する予定が並ぶ「今日」の画面。">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "すでに続けている注射ルーティンのための、iPhoneのプライベートなジャーナル。スケジュール、記録、部位、チェックイン、メモを、アカウントもサーバもなしにデバイスに保存します。",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>あなたの注射ルーティンを、あなた自身の言葉で記録。</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-ja&amp;l=ja&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="App StoreでVialogをダウンロード" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">無料。オプションの購入は1つだけで、サブスクリプションはありません。</div>
+  </div>
+
+  <p class="lede">すでに注射ルーティンを続けている人のための、iPhoneのプライベートなジャーナルです。何を使ったか、どれだけ、いつ、どこに、どう感じたか。名前、量、スケジュールはご自身で入力します。Vialogはその記録を保管します。</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="今日：今日記録するルーティン、次の予定、今週" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="注射の記録：量、時刻、部位を1枚の記録票に" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="ルーティンの予定量の推移。各記録が点で表示されます" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">個人的な記録です。このアプリは製品や治療の変更を推奨しません。何かを選んだり、量を計算したり、変更を提案したりすることはありません。</p>
+
+  <h2>Vialogでできること</h2>
+  <ul class="plain">
+    <li><strong>ルーティンを管理。</strong>それぞれに自分で名前を付け、時刻と予定量を、いつも使っている単位で設定します。検索、提案、換算は一切ありません。</li>
+    <li><strong>リマインダー。</strong>予定時刻ごとに、デバイス上でiOSがリマインダーを届けます。初期設定では、予定があることだけが表示されます。ルーティン名と量がロック画面に表示されるのは、その設定をオンにした場合だけです。</li>
+    <li><strong>数秒で記録。</strong>量を確認し、必要なら部位を選び、メモを追加します。過去の部位も表示されるので、これまでどこに記録したかがわかります。</li>
+    <li><strong>ジャーナルをつける。</strong>エネルギー、睡眠、食欲のチェックイン、自分の言葉で書く症状、体の測定値、検査結果を、いつでも記録できます。リンクしない限り、ルーティンとは別に保管されます。</li>
+    <li><strong>履歴を表示。</strong>すべての記録を日ごとに絞り込みとともに表示し、記録した内容の推移をグラフで示します。</li>
+    <li><strong>手元の量を数える（希望する場合）。</strong>手元にある量を入力すると、ご自身の記録に応じて差し引かれ、どこまで足りるかがわかります。表示するのは件数と日付だけで、何かを入手するよう促すことはありません。</li>
+    <li><strong>データを持ち出せる。</strong>すべてをCSVまたはPDFレポート（PDFはVialog Pro）で書き出したり、1つのファイルにバックアップして新しいiPhoneで復元したり、すべて削除したりできます。</li>
+  </ul>
+
+  <h2>プライバシーを第一に設計</h2>
+  <p>アカウントなし。サインインなし。広告、分析、トラッキングもありません。記録はiPhoneに保存され、Apple Watchアプリを使う場合はApple Watchにも表示されます。Vialogには記録を送るサーバがありません。オプションのアプリロックでは、アプリを開く前にFace ID、Touch ID、またはパスコードが求められ、アプリスイッチャーでは空白のカバーが表示されます。詳しくは<a href="../privacy.html">プライバシーポリシー</a>（英語）をご覧ください。</p>
+
+  <h2>ヘルプ</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">注射部位の記録をつける</a></li>
+    <li><a href="help/reminders.html">ルーティンに合わせたリマインダー</a></li>
+    <li><a href="help/apple-watch.html">Apple Watch、ウィジェット、Siriから記録する</a></li>
+    <li><a href="help/export-for-appointment.html">記録を受診に持っていく</a></li>
+    <li><a href="help/no-server.html">Vialogにサーバがない理由</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">お問い合わせ</h2>
+    <p>質問、不具合の報告、ご要望を歓迎します。<a href="mailto:csergay@gmail.com">csergay@gmail.com</a>までメールでご連絡いただければ、返信いたします。</p>
+    <p style="margin:0">iOSのバージョン、設定に表示されるVialogのバージョンとビルド、問題が起きたときに何をしていたかを書き添えていただけると助かります。</p>
+  </div>
+
+  <h2 id="questions">よくある質問</h2>
+  <dl>
+    <dt>記録はどこに保存されますか？</dt>
+    <dd>iPhoneの、アプリ専用の保存領域に保存され、デバイスのパスコードで保護されます。iPhoneをiCloudやコンピュータにバックアップしている場合、アプリのデータはAppleの規約のもとでそのバックアップに含まれます。それ以外の場所には何も保管されません。</dd>
+
+    <dt>Vialogは、何をいつ使うかを教えてくれますか？</dt>
+    <dd>いいえ。すでに続けているルーティンを、入力した量と時刻のとおりに記録します。製品を選んだり、量を計算したり、部位を提案したり、変更を推奨したりすることはありません。ルーティンについて変えるべきことがあれば、それは処方している方との話し合いになります。</dd>
+
+    <dt>無料で使えるものと、Vialog Proで加わるものは？</dt>
+    <dd>記録、リマインダー、ジャーナル、履歴、部位、アプリロック、CSV書き出し、バックアップ、復元、削除は無料で、今後も無料です。Vialog Proはサブスクリプションではなく1回限りの購入で、4つの機能が加わります：4つ以上のアクティブなルーティン、手元の量、振り返り（任意の期間の記録を1つの時間軸で表示。過去30日間はジャーナルで引き続き無料）、PDFレポート。すでに使っているものは、購入の有無にかかわらず引き続き使えます。</dd>
+
+    <dt>Vialog Proを購入しました。新しいiPhoneで使うには？</dt>
+    <dd>Vialog内の設定を開いてVialog Proを選び、購入時と同じApple Accountでサインインした状態で<strong>購入を復元</strong>をタップします。ファミリー共有に対応しているので、購入を共有している人も利用できます。記録は別です。バックアップファイル、またはiPhoneのバックアップで移してください。</dd>
+
+    <dt>リマインダーが届きませんでした。</dt>
+    <dd>リマインダーはiOSが配信するもので、配信は保証されません。iOSの設定でVialogの通知が許可されているか、集中モードで通知が保留されていないかを確認してください。Vialogの<strong>設定 › リマインダーを確認</strong>では、登録されているリマインダーの数と、いつまでの分が登録されているかを確認できます。</dd>
+
+    <dt>リマインダーにルーティン名が表示されないのはなぜですか？</dt>
+    <dd>ロック画面は、iPhoneが見える人なら誰でも読めるからです。初期設定のリマインダーには、予定があることだけが表示されます。ルーティン名と量をそこに表示したい場合は、設定で<strong>ルーティン名と量を表示</strong>をオンにしてください。</dd>
+
+    <dt>記録を変更したり削除したりできますか？</dt>
+    <dd>はい。「今日」またはジャーナルから記録を開くと、量、時刻、部位、メモを修正したり、記録を削除したりできます。予定に対する記録を削除すると、その予定は「未記録」に戻ります。変更はすべて改訂として保存されます。</dd>
+
+    <dt>単位が換算されないのはなぜですか？</dt>
+    <dd>換算には、Vialogが知らず、推測すべきでもない濃度が必要になるからです。量は入力したとおりに、選んだ単位のまま保存されます。別の単位の記録は、合算されずにそのまま表示されます。</dd>
+
+    <dt>すべてを削除するには？</dt>
+    <dd>設定 › 書き出し、バックアップ、削除 › <strong>すべての記録を削除</strong>。アプリを削除すると、アプリが保存したものもすべて削除されます。ほかの場所に保管されているものはないので、削除を依頼する必要もありません。</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">ヘルプ</a> · <a href="../privacy.html">プライバシーポリシー</a>（英語） · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-ja&amp;l=ja&amp;mt=8">App StoreのVialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <strong lang="ja">日本語</strong> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

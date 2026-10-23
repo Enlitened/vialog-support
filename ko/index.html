@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog — 주사 루틴을 위한 비공개 저널</title>
+<meta name="description" content="주사 일정, 기록, 부위, 메모를 iPhone에 보관하세요. 계정, 분석, 서버가 없으며, 직접 내보내지 않으면 아무것도 나가지 않습니다.">
+<link rel="canonical" href="https://vialog.club/ko/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog — 주사 루틴을 위한 비공개 저널">
+<meta property="og:description" content="주사 일정, 기록, 부위, 메모를 iPhone에 보관하세요. 계정, 분석, 서버가 없으며, 직접 내보내지 않으면 아무것도 나가지 않습니다.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/ko/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="iPhone의 Vialog: 시간에 따른 루틴의 계획량과, 기록할 예정 항목이 있는 오늘 화면.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "이미 따르고 있는 주사 루틴을 위한 비공개 iPhone 저널: 일정, 기록, 부위, 체크인, 메모를 계정이나 서버 없이 기기에 보관합니다.",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>나의 주사 루틴을, 나의 말로 기록합니다.</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-ko&amp;l=ko&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="App Store에서 Vialog 다운로드" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">무료. 선택 구매 하나뿐이며, 구독은 없습니다.</div>
+  </div>
+
+  <p class="lede">이미 주사 루틴을 따르고 있는 사람을 위한 비공개 iPhone 저널입니다. 무엇을 사용했는지, 얼마나, 언제, 어디에, 기분은 어땠는지. 이름, 양, 일정은 직접 입력합니다. Vialog는 기록을 보관합니다.</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="오늘: 오늘 기록할 루틴, 다음 예정 항목, 이번 주" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="주사 기록: 양, 시각, 부위를 한 장의 기록지에" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="시간에 따른 루틴의 계획량, 각 기록은 점으로 표시" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">개인 기록입니다. 이 앱은 제품이나 치료 변경을 권하지 않습니다. 무엇도 고르거나, 용량을 계산하거나, 변경을 제안하지 않습니다.</p>
+
+  <h2>Vialog가 하는 일</h2>
+  <ul class="plain">
+    <li><strong>루틴 보관.</strong> 루틴마다 이름을 직접 정하고, 이미 사용하는 단위로 시각과 계획량을 설정하세요. 아무것도 조회하거나 제안하거나 변환하지 않습니다.</li>
+    <li><strong>알림.</strong> 예정 시각마다 기기에서 iOS가 알림을 전달합니다. 기본적으로 알림은 예정 항목이 있다는 것만 알려 주며, 루틴 이름과 양은 직접 켠 경우에만 잠금 화면에 표시됩니다.</li>
+    <li><strong>몇 초 만에 기록.</strong> 양을 확인하고, 원하면 부위를 고르고, 메모를 더하세요. 이전 부위가 계속 보이므로 지금까지 어디에 했는지 알 수 있습니다.</li>
+    <li><strong>저널 기록.</strong> 에너지, 수면, 식욕에 대한 체크인, 직접 표현한 증상, 신체 측정, 검사 결과를 어느 날이든 기록할 수 있으며, 직접 연결하지 않는 한 루틴과 따로 보관됩니다.</li>
+    <li><strong>기록 내역.</strong> 모든 기록을 날짜별로 필터와 함께 보여 주고, 기록한 내용을 시간에 따라 차트로 보여 줍니다.</li>
+    <li><strong>원하면 보유량 계산.</strong> 가지고 있는 양을 입력하면 내 기록에 따라 차감되며 어디까지 충분한지 보여 줍니다. 개수와 날짜만 알려 주며, 무언가를 구하라고 안내하지 않습니다.</li>
+    <li><strong>언제든 가져갈 수 있습니다.</strong> 모든 것을 CSV나 PDF 보고서(PDF는 Vialog Pro)로 내보내고, 하나의 파일로 백업하고, 새 휴대폰에서 복원하거나, 모두 삭제할 수 있습니다.</li>
+  </ul>
+
+  <h2>설계부터 비공개</h2>
+  <p>계정 없음. 로그인 없음. 광고, 분석, 추적 없음. 기록은 iPhone에 저장되고, Apple Watch 앱을 사용하면 Apple Watch에 표시되며, Vialog에는 기록을 보낼 서버가 없습니다. 선택 사항인 앱 잠금은 앱을 열기 전에 Face ID, Touch ID 또는 암호를 요구하고, 앱 전환기에 빈 가림 화면을 표시합니다. <a href="../privacy.html">개인정보 처리방침</a>(영어)을 읽어 보세요.</p>
+
+  <h2>도움말</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">주사 부위 기록하기</a></li>
+    <li><a href="help/reminders.html">루틴에 맞춘 알림</a></li>
+    <li><a href="help/apple-watch.html">Apple Watch, 위젯, Siri에서 기록하기</a></li>
+    <li><a href="help/export-for-appointment.html">진료에 기록 가져가기</a></li>
+    <li><a href="help/no-server.html">Vialog에 서버가 없는 이유</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">문의하기</h2>
+    <p>질문, 버그 신고, 요청 모두 환영합니다. <a href="mailto:csergay@gmail.com">csergay@gmail.com</a>으로 이메일을 보내 주시면 답장을 드립니다.</p>
+    <p style="margin:0">iOS 버전, 설정에 표시되는 Vialog 버전과 빌드, 문제가 생겼을 때 무엇을 하고 있었는지 함께 적어 주시면 도움이 됩니다.</p>
+  </div>
+
+  <h2 id="questions">자주 묻는 질문</h2>
+  <dl>
+    <dt>기록은 어디에 저장되나요?</dt>
+    <dd>iPhone의 앱 전용 저장 공간에 저장되며, 기기 암호로 보호됩니다. 휴대폰을 iCloud나 컴퓨터에 백업하면 앱 데이터는 Apple의 약관에 따라 그 백업에 포함됩니다. 다른 곳에는 아무것도 보관되지 않습니다.</dd>
+
+    <dt>Vialog가 무엇을 언제 사용할지 알려 주나요?</dt>
+    <dd>아니요. 이미 따르고 있는 루틴을 입력한 양과 시각대로 기록합니다. 제품을 고르거나, 양을 계산하거나, 부위를 제안하거나, 변경을 권하지 않습니다. 루틴에 바뀌어야 할 것이 있다면, 처방한 사람과 상의할 일입니다.</dd>
+
+    <dt>무엇이 무료이고, Vialog Pro는 무엇을 더하나요?</dt>
+    <dd>기록, 알림, 저널, 기록 내역, 부위, 앱 잠금, CSV 내보내기, 백업, 복원, 삭제는 무료이며 앞으로도 무료입니다. Vialog Pro는 구독이 아닌 한 번 구매이며, 네 가지를 더합니다: 세 개를 넘는 활성 루틴, 보유량, 돌아보기(모든 기간의 기록을 하나의 시간 축에 표시. 최근 30일은 저널에서 계속 무료), PDF 보고서. 구매 여부와 관계없이 이미 가진 것은 계속 작동합니다.</dd>
+
+    <dt>Vialog Pro를 구매했습니다. 새 휴대폰에서 다시 사용하려면?</dt>
+    <dd>Vialog 안에서 설정을 열고 Vialog Pro로 이동한 다음, 구매할 때와 같은 Apple 계정으로 로그인한 상태에서 <strong>구매 항목 복원</strong>을 탭하세요. 가족 공유가 지원되므로 구매 항목을 공유하는 사람도 사용할 수 있습니다. 기록은 별개입니다. 백업 파일이나 iPhone 백업으로 옮기세요.</dd>
+
+    <dt>알림이 오지 않았습니다.</dt>
+    <dd>알림은 iOS가 전달하며, 전달은 보장되지 않습니다. iOS 설정에서 Vialog 알림이 허용되어 있는지, 집중 모드가 알림을 보류하고 있지 않은지 확인하세요. Vialog의 <strong>설정 › 알림 확인</strong>에서 등록된 알림 수와 언제까지 예약되어 있는지 볼 수 있습니다.</dd>
+
+    <dt>알림에 어떤 루틴인지 나오지 않는 이유는 무엇인가요?</dt>
+    <dd>휴대폰을 볼 수 있는 사람은 누구나 잠금 화면을 읽을 수 있기 때문입니다. 기본 알림은 예정 항목이 있다는 것만 알려 줍니다. 루틴 이름과 양을 거기에 표시하고 싶다면 설정에서 <strong>루틴 이름과 양 표시</strong>를 켜세요.</dd>
+
+    <dt>기록을 수정하거나 제거할 수 있나요?</dt>
+    <dd>네. 오늘이나 저널에서 기록을 열어 양, 시각, 부위, 메모를 고치거나 기록을 제거할 수 있습니다. 예정 항목의 기록을 제거하면 그 항목은 ‘기록 안 됨’으로 돌아갑니다. 모든 변경은 수정 이력으로 보관됩니다.</dd>
+
+    <dt>단위를 변환하지 않는 이유는 무엇인가요?</dt>
+    <dd>변환은 Vialog가 알지 못하고 가정해서도 안 되는 농도에 따라 달라지기 때문입니다. 양은 입력한 그대로, 선택한 단위로 보관되며, 다른 단위의 기록은 합쳐지지 않고 그대로 표시됩니다.</dd>
+
+    <dt>모든 것을 삭제하려면?</dt>
+    <dd>설정 › 내보내기, 백업 및 삭제 › <strong>모든 기록 삭제</strong>. 앱을 제거하면 앱이 저장한 모든 것도 제거됩니다. 다른 곳에 보관된 것이 없으므로 따로 요청할 것도 없습니다.</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">도움말</a> · <a href="../privacy.html">개인정보 처리방침</a>(영어) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-ko&amp;l=ko&amp;mt=8">App Store의 Vialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <strong lang="ko">한국어</strong></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>
