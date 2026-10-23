@@ -50,72 +50,13 @@
 <!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
      names, no injecting-equipment imagery, and nothing that recommends anything. This page
      describes record-keeping and reminding, which is what the app does. -->
-<style>
-  :root {
-    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
-    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground: #121416; --surface: #212427; --ink: #eef2f3;
-      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--ground); color: var(--ink);
-    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
-  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
-  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
-  p { margin: 0 0 14px; }
-  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
-  a { color: var(--accent); }
-  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
-  li { margin-bottom: 6px; }
-  dl { margin: 0; }
-  dt { font-weight: 600; margin-top: 22px; }
-  dd { margin: 4px 0 0; color: var(--muted); }
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
-    padding: 22px 24px; margin: 28px 0 0;
-  }
-  .standing { color: var(--muted); font-size: .95rem; }
-  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-  .hero { text-align: center; margin-bottom: 44px; }
-  .hero > img {
-    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
-    box-shadow: 0 14px 34px rgba(0,0,0,.14);
-  }
-  .hero h1 { font-size: 2.6rem; }
-  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
-  .badge { display: inline-flex; }
-  .badge picture, .badge img { display: block; }
-  .badge img { height: 54px; width: auto; }
-  .badge:hover { filter: brightness(1.15); }
-  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
-  .shots {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
-    margin: 0 0 36px;
-  }
-  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
-  @media (max-width: 520px) {
-    .shots {
-      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
-      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
-    }
-    .shots img { scroll-snap-align: center; }
-  }
-  ul.plain { list-style: none; padding: 0; margin: 0; }
-  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
-  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
-</style>
+<link rel="preload" href="fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+<script src="site.js" defer></script>
 </head>
-<body>
+<body class="home">
 <main>
-  <div class="hero">
+  <header class="hero">
     <img src="icon-256.png" alt="">
     <h1>Vialog</h1>
     <p>Your injection routine, recorded in your own words.</p>
@@ -126,76 +67,99 @@
       </picture>
     </a>
     <div class="price">Free. One optional purchase, never a subscription.</div>
-  </div>
+    <div class="day-ring" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle class="track" cx="200" cy="200" r="150"/>
+        <circle class="arc" cx="200" cy="200" r="150" transform="rotate(90 200 200)" style="stroke-dasharray:942.5;stroke-dashoffset:562.2"/>
+        <line class="tick major" x1="200.0" y1="320.0" x2="200.0" y2="312.0"/><line class="tick" x1="168.9" y1="315.9" x2="170.0" y2="312.0"/><line class="tick" x1="140.0" y1="303.9" x2="142.0" y2="300.5"/><line class="tick" x1="115.1" y1="284.9" x2="118.0" y2="282.0"/><line class="tick" x1="96.1" y1="260.0" x2="99.5" y2="258.0"/><line class="tick" x1="84.1" y1="231.1" x2="88.0" y2="230.0"/><line class="tick major" x1="80.0" y1="200.0" x2="88.0" y2="200.0"/><line class="tick" x1="84.1" y1="168.9" x2="88.0" y2="170.0"/><line class="tick" x1="96.1" y1="140.0" x2="99.5" y2="142.0"/><line class="tick" x1="115.1" y1="115.1" x2="118.0" y2="118.0"/><line class="tick" x1="140.0" y1="96.1" x2="142.0" y2="99.5"/><line class="tick" x1="168.9" y1="84.1" x2="170.0" y2="88.0"/><line class="tick major" x1="200.0" y1="80.0" x2="200.0" y2="88.0"/><line class="tick" x1="231.1" y1="84.1" x2="230.0" y2="88.0"/><line class="tick" x1="260.0" y1="96.1" x2="258.0" y2="99.5"/><line class="tick" x1="284.9" y1="115.1" x2="282.0" y2="118.0"/><line class="tick" x1="303.9" y1="140.0" x2="300.5" y2="142.0"/><line class="tick" x1="315.9" y1="168.9" x2="312.0" y2="170.0"/><line class="tick major" x1="320.0" y1="200.0" x2="312.0" y2="200.0"/><line class="tick" x1="315.9" y1="231.1" x2="312.0" y2="230.0"/><line class="tick" x1="303.9" y1="260.0" x2="300.5" y2="258.0"/><line class="tick" x1="284.9" y1="284.9" x2="282.0" y2="282.0"/><line class="tick" x1="260.0" y1="303.9" x2="258.0" y2="300.5"/><line class="tick" x1="231.1" y1="315.9" x2="230.0" y2="312.0"/>
+        <text class="hour" x="200.0" y="298.0">00</text><text class="hour" x="102.0" y="200.0">06</text><text class="hour" x="200.0" y="102.0">12</text><text class="hour" x="298.0" y="200.0">18</text>
+        <circle class="entry past" data-hour="8" cx="70.1" cy="125.0" r="8"/><circle class="entry" data-hour="20.5" cx="319.0" cy="291.3" r="8"/>
+        <circle class="hand" cx="114.5" cy="76.8" r="14"/>
+        <text class="now" x="200" y="200">9:41</text>
+      </svg>
+    </div>
+  </header>
 
-  <p class="lede">A private iPhone journal for people who already follow an injection routine: what you used, how much, when, where, and how you felt. You bring the names, the quantities and the schedule. Vialog keeps the record.</p>
+  <section class="intro">
+    <p class="lede">A private iPhone journal for people who already follow an injection routine: what you used, how much, when, where, and how you felt. You bring the names, the quantities and the schedule. Vialog keeps the record.</p>
 
-  <div class="shots">
-    <img src="shot-today.jpg" alt="Today: the routines to record today, the next entry and this week" width="552" height="1200" loading="lazy">
-    <img src="shot-record.jpg" alt="Recording an injection: quantity, time and site on one slip" width="552" height="1200" loading="lazy">
-    <img src="shot-routine.jpg" alt="A routine's planned quantity over time, with each record as a dot" width="552" height="1200" loading="lazy">
-  </div>
+    <div class="shots">
+      <img src="shot-today.jpg" alt="Today: the routines to record today, the next entry and this week" width="552" height="1200" loading="lazy">
+      <img src="shot-record.jpg" alt="Recording an injection: quantity, time and site on one slip" width="552" height="1200" loading="lazy">
+      <img src="shot-routine.jpg" alt="A routine's planned quantity over time, with each record as a dot" width="552" height="1200" loading="lazy">
+    </div>
 
-  <p class="standing">A personal record. This app does not recommend products or changes to treatment. It never selects anything, calculates a dose, or suggests a change.</p>
+    <p class="standing">A personal record. This app does not recommend products or changes to treatment. It never selects anything, calculates a dose, or suggests a change.</p>
+  </section>
 
-  <h2>What Vialog does</h2>
-  <ul class="plain">
-    <li><strong>Keeps your routines.</strong> Name each one yourself, set the times and the planned amount, in the units you already use. Nothing is looked up, suggested or converted.</li>
-    <li><strong>Reminds you.</strong> A reminder at each scheduled time, delivered by iOS on the device. By default it says only that you have a scheduled entry; the routine's name and amount appear on the lock screen only if you turn that on.</li>
-    <li><strong>Records in seconds.</strong> Confirm the amount, pick a site if you like, add a note. Past sites stay visible so you can see where you have been.</li>
-    <li><strong>Keeps a journal.</strong> Check-ins on energy, sleep and appetite, symptoms in your own words, body measurements and lab results, on any day, kept apart from your routines unless you link them.</li>
-    <li><strong>Shows your history.</strong> Every record by day, with filters, and a chart of what you recorded over time.</li>
-    <li><strong>Counts what you hold, if you ask it to.</strong> Enter the amount you have on hand and see what it covers, counted down by your own records. It reports a count and a day; it never prompts you to obtain anything.</li>
-    <li><strong>Leaves with you.</strong> Export everything as CSV or a PDF report (the PDF with Vialog Pro), back up to a single file, restore it on a new phone, or delete it all.</li>
-  </ul>
+  <section class="does">
+    <h2>What Vialog does</h2>
+    <ul class="plain">
+      <li><strong>Keeps your routines.</strong> Name each one yourself, set the times and the planned amount, in the units you already use. Nothing is looked up, suggested or converted.</li>
+      <li><strong>Reminds you.</strong> A reminder at each scheduled time, delivered by iOS on the device. By default it says only that you have a scheduled entry; the routine's name and amount appear on the lock screen only if you turn that on.</li>
+      <li><strong>Records in seconds.</strong> Confirm the amount, pick a site if you like, add a note. Past sites stay visible so you can see where you have been.</li>
+      <li><strong>Keeps a journal.</strong> Check-ins on energy, sleep and appetite, symptoms in your own words, body measurements and lab results, on any day, kept apart from your routines unless you link them.</li>
+      <li><strong>Shows your history.</strong> Every record by day, with filters, and a chart of what you recorded over time.</li>
+      <li><strong>Counts what you hold, if you ask it to.</strong> Enter the amount you have on hand and see what it covers, counted down by your own records. It reports a count and a day; it never prompts you to obtain anything.</li>
+      <li><strong>Leaves with you.</strong> Export everything as CSV or a PDF report (the PDF with Vialog Pro), back up to a single file, restore it on a new phone, or delete it all.</li>
+    </ul>
+  </section>
 
-  <h2>Private by design</h2>
-  <p>No account. No sign-in. No ads, no analytics, no tracking. Your records are stored on your iPhone, shown on your Apple Watch if you use the watch app, and Vialog has no server to send them to. Optional App Lock asks for Face ID, Touch ID or your passcode before the app opens and shows a blank cover in the app switcher. Read the <a href="privacy.html">privacy policy</a>.</p>
+  <section class="private">
+    <h2>Private by design</h2>
+    <p>No account. No sign-in. No ads, no analytics, no tracking. Your records are stored on your iPhone, shown on your Apple Watch if you use the watch app, and Vialog has no server to send them to. Optional App Lock asks for Face ID, Touch ID or your passcode before the app opens and shows a blank cover in the app switcher. Read the <a href="privacy.html">privacy policy</a>.</p>
+  </section>
 
-  <h2>Help</h2>
-  <ul class="plain">
-    <li><a href="help/injection-site-log.html">Keeping a log of injection sites</a></li>
-    <li><a href="help/reminders.html">Reminders that fit your routine</a></li>
-    <li><a href="help/apple-watch.html">Recording from Apple Watch, widgets and Siri</a></li>
-    <li><a href="help/export-for-appointment.html">Taking your records to an appointment</a></li>
-    <li><a href="help/no-server.html">Why Vialog has no server</a></li>
-  </ul>
+  <section class="links">
+    <h2>Help</h2>
+    <ul class="plain">
+      <li><a href="help/injection-site-log.html">Keeping a log of injection sites</a></li>
+      <li><a href="help/reminders.html">Reminders that fit your routine</a></li>
+      <li><a href="help/apple-watch.html">Recording from Apple Watch, widgets and Siri</a></li>
+      <li><a href="help/export-for-appointment.html">Taking your records to an appointment</a></li>
+      <li><a href="help/no-server.html">Why Vialog has no server</a></li>
+    </ul>
+  </section>
 
-  <div class="card">
-    <h2 style="margin-top:0">Get in touch</h2>
-    <p>Questions, bug reports and requests are all welcome. Email <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> and you will get a reply.</p>
-    <p style="margin:0">It helps to include your iOS version, the Vialog version and build from Settings, and what you were doing when something went wrong.</p>
-  </div>
+  <section class="contact">
+    <div class="card">
+      <h2>Get in touch</h2>
+      <p>Questions, bug reports and requests are all welcome. Email <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> and you will get a reply.</p>
+      <p>It helps to include your iOS version, the Vialog version and build from Settings, and what you were doing when something went wrong.</p>
+    </div>
+  </section>
 
-  <h2 id="questions">Common questions</h2>
-  <dl>
-    <dt>Where are my records stored?</dt>
-    <dd>On your iPhone, in the app's own storage, protected by the device passcode. If you back up your phone to iCloud or a computer, the app's data is part of that backup under Apple's terms. Nothing is kept anywhere else.</dd>
+  <section class="faq">
+    <h2 id="questions">Common questions</h2>
+    <dl>
+      <dt>Where are my records stored?</dt>
+      <dd>On your iPhone, in the app's own storage, protected by the device passcode. If you back up your phone to iCloud or a computer, the app's data is part of that backup under Apple's terms. Nothing is kept anywhere else.</dd>
 
-    <dt>Does Vialog tell me what to take or when?</dt>
-    <dd>No. It records the routine you already follow, in the amounts and at the times you enter. It never selects a product, calculates an amount, suggests a site or recommends a change. If something about your routine should change, that is a conversation with the person who prescribes it.</dd>
+      <dt>Does Vialog tell me what to take or when?</dt>
+      <dd>No. It records the routine you already follow, in the amounts and at the times you enter. It never selects a product, calculates an amount, suggests a site or recommends a change. If something about your routine should change, that is a conversation with the person who prescribes it.</dd>
 
-    <dt>What is free, and what does Vialog Pro add?</dt>
-    <dd>Recording, reminders, the journal, history, sites, App Lock, CSV export, backup, restore and deleting are free and stay free. Vialog Pro is a single purchase, not a subscription, and adds four things: more than three active routines, the amount on hand, Review (your records on one time axis over any range; the last 30 days stay free in the Journal), and the PDF report. Anything you already have keeps working whether or not you buy it.</dd>
+      <dt>What is free, and what does Vialog Pro add?</dt>
+      <dd>Recording, reminders, the journal, history, sites, App Lock, CSV export, backup, restore and deleting are free and stay free. Vialog Pro is a single purchase, not a subscription, and adds four things: more than three active routines, the amount on hand, Review (your records on one time axis over any range; the last 30 days stay free in the Journal), and the PDF report. Anything you already have keeps working whether or not you buy it.</dd>
 
-    <dt>I bought Vialog Pro. How do I get it back on a new phone?</dt>
-    <dd>Open Settings inside Vialog, then Vialog Pro, and tap <strong>Restore purchases</strong>, signed in with the same Apple Account you bought it with. Family Sharing is on, so people you share purchases with get it too. Your records are separate: move them with a backup file, or through an iPhone backup.</dd>
+      <dt>I bought Vialog Pro. How do I get it back on a new phone?</dt>
+      <dd>Open Settings inside Vialog, then Vialog Pro, and tap <strong>Restore purchases</strong>, signed in with the same Apple Account you bought it with. Family Sharing is on, so people you share purchases with get it too. Your records are separate: move them with a backup file, or through an iPhone backup.</dd>
 
-    <dt>A reminder did not arrive.</dt>
-    <dd>Reminders are delivered by iOS, and delivery is not guaranteed. Check that notifications are allowed for Vialog in iOS Settings, and that a Focus mode is not holding them. <strong>Settings › Check reminders</strong> in Vialog shows how many reminders are registered and the date they are covered until.</dd>
+      <dt>A reminder did not arrive.</dt>
+      <dd>Reminders are delivered by iOS, and delivery is not guaranteed. Check that notifications are allowed for Vialog in iOS Settings, and that a Focus mode is not holding them. <strong>Settings › Check reminders</strong> in Vialog shows how many reminders are registered and the date they are covered until.</dd>
 
-    <dt>Why does the reminder not say which routine it is?</dt>
-    <dd>Because the lock screen can be read by anyone who can see the phone. The default reminder says only that you have a scheduled entry. If you would rather see the routine's name and amount there, turn on <strong>Show routine name and quantity</strong> in Settings.</dd>
+      <dt>Why does the reminder not say which routine it is?</dt>
+      <dd>Because the lock screen can be read by anyone who can see the phone. The default reminder says only that you have a scheduled entry. If you would rather see the routine's name and amount there, turn on <strong>Show routine name and quantity</strong> in Settings.</dd>
 
-    <dt>Can I change or remove a record?</dt>
-    <dd>Yes. Open the record from Today or the Journal to correct its amount, time, site or note, or to remove it. A removed scheduled entry goes back to "not logged". Every change is kept as a revision.</dd>
+      <dt>Can I change or remove a record?</dt>
+      <dd>Yes. Open the record from Today or the Journal to correct its amount, time, site or note, or to remove it. A removed scheduled entry goes back to "not logged". Every change is kept as a revision.</dd>
 
-    <dt>Why is a unit never converted?</dt>
-    <dd>Because a conversion depends on a strength Vialog does not know and should not assume. Amounts are kept exactly as you typed them, in the unit you chose, and a record in a different unit is shown as such rather than folded in.</dd>
+      <dt>Why is a unit never converted?</dt>
+      <dd>Because a conversion depends on a strength Vialog does not know and should not assume. Amounts are kept exactly as you typed them, in the unit you chose, and a record in a different unit is shown as such rather than folded in.</dd>
 
-    <dt>How do I delete everything?</dt>
-    <dd>Settings, then Export, backup and delete, then <strong>Delete all records</strong>. Removing the app also removes everything it stored. There is nothing held elsewhere to ask for.</dd>
-  </dl>
+      <dt>How do I delete everything?</dt>
+      <dd>Settings, then Export, backup and delete, then <strong>Delete all records</strong>. Removing the app also removes everything it stored. There is nothing held elsewhere to ask for.</dd>
+    </dl>
+  </section>
 
   <footer>
     <a href="help/">Help</a> · <a href="blog/">Blog</a> · <a href="privacy.html">Privacy Policy</a> · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website&amp;mt=8">Vialog on the App Store</a> · © 2026 Colin Sergay

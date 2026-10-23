@@ -9,60 +9,12 @@
 <link rel="icon" href="icon-256.png">
 <!-- This page and the app's Privacy screen (Vialog/Features/Settings/PrivacyView.swift)
      say the same thing in the same words. Change both together. -->
-<style>
-  :root {
-    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
-    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground: #121416; --surface: #212427; --ink: #eef2f3;
-      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--ground); color: var(--ink);
-    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
-  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
-  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
-  p { margin: 0 0 14px; }
-  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
-  a { color: var(--accent); }
-  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
-  li { margin-bottom: 6px; }
-  dl { margin: 0; }
-  dt { font-weight: 600; margin-top: 22px; }
-  dd { margin: 4px 0 0; color: var(--muted); }
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
-    padding: 22px 24px; margin: 28px 0 0;
-  }
-  .standing { color: var(--muted); font-size: .95rem; }
-  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-  .hero { text-align: center; margin-bottom: 44px; }
-  .hero img {
-    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
-    box-shadow: 0 14px 34px rgba(0,0,0,.14);
-  }
-  .hero h1 { font-size: 2.6rem; }
-  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
-  .get {
-    display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
-    font-weight: 600; padding: 13px 26px; border-radius: 999px;
-  }
-  .get:hover { filter: brightness(1.08); }
-  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
-  ul.plain { list-style: none; padding: 0; margin: 0; }
-  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
-  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <main>
+  <nav class="crumbs"><a href="./"><img src="icon-256.png" alt=""></a><a href="./">Vialog</a></nav>
+
   <h1>Privacy</h1>
   <p class="lede">Vialog is a personal record kept on your iPhone, and shown on your Apple Watch if you use one. This page says what it keeps, where that stays, and what leaves the device. Last changed 18 October 2026.</p>
 

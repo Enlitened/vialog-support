@@ -50,72 +50,13 @@
 <!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
      names, no injecting-equipment imagery, and nothing that recommends anything. This page
      describes record-keeping and reminding, which is what the app does. -->
-<style>
-  :root {
-    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
-    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --ground: #121416; --surface: #212427; --ink: #eef2f3;
-      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; background: var(--ground); color: var(--ink);
-    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
-  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
-  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
-  p { margin: 0 0 14px; }
-  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
-  a { color: var(--accent); }
-  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
-  li { margin-bottom: 6px; }
-  dl { margin: 0; }
-  dt { font-weight: 600; margin-top: 22px; }
-  dd { margin: 4px 0 0; color: var(--muted); }
-  .card {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
-    padding: 22px 24px; margin: 28px 0 0;
-  }
-  .standing { color: var(--muted); font-size: .95rem; }
-  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-  .hero { text-align: center; margin-bottom: 44px; }
-  .hero > img {
-    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
-    box-shadow: 0 14px 34px rgba(0,0,0,.14);
-  }
-  .hero h1 { font-size: 2.6rem; }
-  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
-  .badge { display: inline-flex; }
-  .badge picture, .badge img { display: block; }
-  .badge img { height: 54px; width: auto; }
-  .badge:hover { filter: brightness(1.15); }
-  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
-  .shots {
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
-    margin: 0 0 36px;
-  }
-  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
-  @media (max-width: 520px) {
-    .shots {
-      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
-      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
-    }
-    .shots img { scroll-snap-align: center; }
-  }
-  ul.plain { list-style: none; padding: 0; margin: 0; }
-  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
-  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
-</style>
+<link rel="preload" href="../fonts/archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../site.css">
+<script src="../site.js" defer></script>
 </head>
-<body>
+<body class="home">
 <main>
-  <div class="hero">
+  <header class="hero">
     <img src="../icon-256.png" alt="">
     <h1>Vialog</h1>
     <p>Sua rotina de injeções, registrada com suas próprias palavras.</p>
@@ -126,76 +67,99 @@
       </picture>
     </a>
     <div class="price">Grátis. Uma compra opcional, nunca uma assinatura.</div>
-  </div>
+    <div class="day-ring" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle class="track" cx="200" cy="200" r="150"/>
+        <circle class="arc" cx="200" cy="200" r="150" transform="rotate(90 200 200)" style="stroke-dasharray:942.5;stroke-dashoffset:562.2"/>
+        <line class="tick major" x1="200.0" y1="320.0" x2="200.0" y2="312.0"/><line class="tick" x1="168.9" y1="315.9" x2="170.0" y2="312.0"/><line class="tick" x1="140.0" y1="303.9" x2="142.0" y2="300.5"/><line class="tick" x1="115.1" y1="284.9" x2="118.0" y2="282.0"/><line class="tick" x1="96.1" y1="260.0" x2="99.5" y2="258.0"/><line class="tick" x1="84.1" y1="231.1" x2="88.0" y2="230.0"/><line class="tick major" x1="80.0" y1="200.0" x2="88.0" y2="200.0"/><line class="tick" x1="84.1" y1="168.9" x2="88.0" y2="170.0"/><line class="tick" x1="96.1" y1="140.0" x2="99.5" y2="142.0"/><line class="tick" x1="115.1" y1="115.1" x2="118.0" y2="118.0"/><line class="tick" x1="140.0" y1="96.1" x2="142.0" y2="99.5"/><line class="tick" x1="168.9" y1="84.1" x2="170.0" y2="88.0"/><line class="tick major" x1="200.0" y1="80.0" x2="200.0" y2="88.0"/><line class="tick" x1="231.1" y1="84.1" x2="230.0" y2="88.0"/><line class="tick" x1="260.0" y1="96.1" x2="258.0" y2="99.5"/><line class="tick" x1="284.9" y1="115.1" x2="282.0" y2="118.0"/><line class="tick" x1="303.9" y1="140.0" x2="300.5" y2="142.0"/><line class="tick" x1="315.9" y1="168.9" x2="312.0" y2="170.0"/><line class="tick major" x1="320.0" y1="200.0" x2="312.0" y2="200.0"/><line class="tick" x1="315.9" y1="231.1" x2="312.0" y2="230.0"/><line class="tick" x1="303.9" y1="260.0" x2="300.5" y2="258.0"/><line class="tick" x1="284.9" y1="284.9" x2="282.0" y2="282.0"/><line class="tick" x1="260.0" y1="303.9" x2="258.0" y2="300.5"/><line class="tick" x1="231.1" y1="315.9" x2="230.0" y2="312.0"/>
+        <text class="hour" x="200.0" y="298.0">00</text><text class="hour" x="102.0" y="200.0">06</text><text class="hour" x="200.0" y="102.0">12</text><text class="hour" x="298.0" y="200.0">18</text>
+        <circle class="entry past" data-hour="8" cx="70.1" cy="125.0" r="8"/><circle class="entry" data-hour="20.5" cx="319.0" cy="291.3" r="8"/>
+        <circle class="hand" cx="114.5" cy="76.8" r="14"/>
+        <text class="now" x="200" y="200">9:41</text>
+      </svg>
+    </div>
+  </header>
 
-  <p class="lede">Um diário privado no iPhone para quem já segue uma rotina de injeções: o que você usou, quanto, quando, onde e como se sentiu. Você traz os nomes, as quantidades e a programação. O Vialog guarda o registro.</p>
+  <section class="intro">
+    <p class="lede">Um diário privado no iPhone para quem já segue uma rotina de injeções: o que você usou, quanto, quando, onde e como se sentiu. Você traz os nomes, as quantidades e a programação. O Vialog guarda o registro.</p>
 
-  <div class="shots">
-    <img src="../shot-today.jpg" alt="Hoje: as rotinas a registrar hoje, a próxima aplicação e esta semana" width="552" height="1200" loading="lazy">
-    <img src="../shot-record.jpg" alt="Registrando uma injeção: quantidade, horário e local numa só ficha" width="552" height="1200" loading="lazy">
-    <img src="../shot-routine.jpg" alt="A quantidade planejada de uma rotina ao longo do tempo, com cada registro como um ponto" width="552" height="1200" loading="lazy">
-  </div>
+    <div class="shots">
+      <img src="../shot-today.jpg" alt="Hoje: as rotinas a registrar hoje, a próxima aplicação e esta semana" width="552" height="1200" loading="lazy">
+      <img src="../shot-record.jpg" alt="Registrando uma injeção: quantidade, horário e local numa só ficha" width="552" height="1200" loading="lazy">
+      <img src="../shot-routine.jpg" alt="A quantidade planejada de uma rotina ao longo do tempo, com cada registro como um ponto" width="552" height="1200" loading="lazy">
+    </div>
 
-  <p class="standing">Um registro pessoal. Este app não recomenda produtos nem mudanças de tratamento. Ele nunca escolhe nada, nem calcula uma dose, nem sugere uma mudança.</p>
+    <p class="standing">Um registro pessoal. Este app não recomenda produtos nem mudanças de tratamento. Ele nunca escolhe nada, nem calcula uma dose, nem sugere uma mudança.</p>
+  </section>
 
-  <h2>O que o Vialog faz</h2>
-  <ul class="plain">
-    <li><strong>Guarda suas rotinas.</strong> Dê você mesmo o nome de cada uma, defina os horários e a quantidade planejada, nas unidades que você já usa. Nada é consultado, sugerido ou convertido.</li>
-    <li><strong>Lembra você.</strong> Um lembrete em cada horário programado, entregue pelo iOS no aparelho. Por padrão, ele diz apenas que você tem uma aplicação programada; o nome e a quantidade da rotina só aparecem na Tela Bloqueada se você ativar isso.</li>
-    <li><strong>Registra em segundos.</strong> Confirme a quantidade, escolha um local se quiser, adicione uma nota. Os locais anteriores continuam visíveis, para você ver por onde já passou.</li>
-    <li><strong>Mantém um diário.</strong> Check-ins de energia, sono e apetite, sintomas com suas palavras, medições corporais e resultados de exames, em qualquer dia, separados das suas rotinas, a menos que você os vincule.</li>
-    <li><strong>Mostra seu histórico.</strong> Cada registro por dia, com filtros, e um gráfico do que você registrou ao longo do tempo.</li>
-    <li><strong>Conta o que você tem, se você pedir.</strong> Informe a quantidade disponível e veja o que ela cobre, descontada pelos seus próprios registros. Ele informa uma contagem e um dia; nunca pede que você obtenha nada.</li>
-    <li><strong>Vai com você.</strong> Exporte tudo em CSV ou num relatório em PDF (o PDF com o Vialog Pro), faça backup num único arquivo, restaure num celular novo ou apague tudo.</li>
-  </ul>
+  <section class="does">
+    <h2>O que o Vialog faz</h2>
+    <ul class="plain">
+      <li><strong>Guarda suas rotinas.</strong> Dê você mesmo o nome de cada uma, defina os horários e a quantidade planejada, nas unidades que você já usa. Nada é consultado, sugerido ou convertido.</li>
+      <li><strong>Lembra você.</strong> Um lembrete em cada horário programado, entregue pelo iOS no aparelho. Por padrão, ele diz apenas que você tem uma aplicação programada; o nome e a quantidade da rotina só aparecem na Tela Bloqueada se você ativar isso.</li>
+      <li><strong>Registra em segundos.</strong> Confirme a quantidade, escolha um local se quiser, adicione uma nota. Os locais anteriores continuam visíveis, para você ver por onde já passou.</li>
+      <li><strong>Mantém um diário.</strong> Check-ins de energia, sono e apetite, sintomas com suas palavras, medições corporais e resultados de exames, em qualquer dia, separados das suas rotinas, a menos que você os vincule.</li>
+      <li><strong>Mostra seu histórico.</strong> Cada registro por dia, com filtros, e um gráfico do que você registrou ao longo do tempo.</li>
+      <li><strong>Conta o que você tem, se você pedir.</strong> Informe a quantidade disponível e veja o que ela cobre, descontada pelos seus próprios registros. Ele informa uma contagem e um dia; nunca pede que você obtenha nada.</li>
+      <li><strong>Vai com você.</strong> Exporte tudo em CSV ou num relatório em PDF (o PDF com o Vialog Pro), faça backup num único arquivo, restaure num celular novo ou apague tudo.</li>
+    </ul>
+  </section>
 
-  <h2>Privado por princípio</h2>
-  <p>Sem conta. Sem login. Sem anúncios, análises ou rastreamento. Seus registros ficam gravados no seu iPhone, aparecem no seu Apple Watch se você usar o app do relógio, e o Vialog não tem servidor para onde enviá-los. O Bloqueio do app, opcional, pede Face ID, Touch ID ou o seu código antes de o app abrir e mostra uma capa em branco no alternador de apps. Leia a <a href="../privacy.html">política de privacidade</a> (em inglês).</p>
+  <section class="private">
+    <h2>Privado por princípio</h2>
+    <p>Sem conta. Sem login. Sem anúncios, análises ou rastreamento. Seus registros ficam gravados no seu iPhone, aparecem no seu Apple Watch se você usar o app do relógio, e o Vialog não tem servidor para onde enviá-los. O Bloqueio do app, opcional, pede Face ID, Touch ID ou o seu código antes de o app abrir e mostra uma capa em branco no alternador de apps. Leia a <a href="../privacy.html">política de privacidade</a> (em inglês).</p>
+  </section>
 
-  <h2>Ajuda</h2>
-  <ul class="plain">
-    <li><a href="help/injection-site-log.html">Manter um registro dos locais de injeção</a></li>
-    <li><a href="help/reminders.html">Lembretes que se ajustam à sua rotina</a></li>
-    <li><a href="help/apple-watch.html">Registrar pelo Apple Watch, widgets e Siri</a></li>
-    <li><a href="help/export-for-appointment.html">Levar seus registros a uma consulta</a></li>
-    <li><a href="help/no-server.html">Por que o Vialog não tem servidor</a></li>
-  </ul>
+  <section class="links">
+    <h2>Ajuda</h2>
+    <ul class="plain">
+      <li><a href="help/injection-site-log.html">Manter um registro dos locais de injeção</a></li>
+      <li><a href="help/reminders.html">Lembretes que se ajustam à sua rotina</a></li>
+      <li><a href="help/apple-watch.html">Registrar pelo Apple Watch, widgets e Siri</a></li>
+      <li><a href="help/export-for-appointment.html">Levar seus registros a uma consulta</a></li>
+      <li><a href="help/no-server.html">Por que o Vialog não tem servidor</a></li>
+    </ul>
+  </section>
 
-  <div class="card">
-    <h2 style="margin-top:0">Fale conosco</h2>
-    <p>Perguntas, relatos de bugs e pedidos são todos bem-vindos. Envie um e-mail para <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> e você receberá uma resposta.</p>
-    <p style="margin:0">Ajuda incluir a versão do iOS, a versão e o build do Vialog, que aparecem nos Ajustes, e o que você estava fazendo quando algo deu errado.</p>
-  </div>
+  <section class="contact">
+    <div class="card">
+      <h2>Fale conosco</h2>
+      <p>Perguntas, relatos de bugs e pedidos são todos bem-vindos. Envie um e-mail para <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> e você receberá uma resposta.</p>
+      <p>Ajuda incluir a versão do iOS, a versão e o build do Vialog, que aparecem nos Ajustes, e o que você estava fazendo quando algo deu errado.</p>
+    </div>
+  </section>
 
-  <h2 id="questions">Perguntas frequentes</h2>
-  <dl>
-    <dt>Onde ficam meus registros?</dt>
-    <dd>No seu iPhone, no armazenamento do próprio app, protegidos pelo código do aparelho. Se você faz backup do celular no iCloud ou num computador, os dados do app fazem parte desse backup, nos termos da Apple. Nada é guardado em nenhum outro lugar.</dd>
+  <section class="faq">
+    <h2 id="questions">Perguntas frequentes</h2>
+    <dl>
+      <dt>Onde ficam meus registros?</dt>
+      <dd>No seu iPhone, no armazenamento do próprio app, protegidos pelo código do aparelho. Se você faz backup do celular no iCloud ou num computador, os dados do app fazem parte desse backup, nos termos da Apple. Nada é guardado em nenhum outro lugar.</dd>
 
-    <dt>O Vialog me diz o que usar ou quando?</dt>
-    <dd>Não. Ele registra a rotina que você já segue, nas quantidades e nos horários que você informa. Ele nunca escolhe um produto, calcula uma quantidade, sugere um local nem recomenda uma mudança. Se algo na sua rotina tiver que mudar, essa é uma conversa com quem a prescreve.</dd>
+      <dt>O Vialog me diz o que usar ou quando?</dt>
+      <dd>Não. Ele registra a rotina que você já segue, nas quantidades e nos horários que você informa. Ele nunca escolhe um produto, calcula uma quantidade, sugere um local nem recomenda uma mudança. Se algo na sua rotina tiver que mudar, essa é uma conversa com quem a prescreve.</dd>
 
-    <dt>O que é gratuito, e o que o Vialog Pro adiciona?</dt>
-    <dd>Registrar, lembretes, o diário, o histórico, os locais, o Bloqueio do app, a exportação CSV, o backup, a restauração e apagar são gratuitos e continuam gratuitos. O Vialog Pro é uma compra única, não uma assinatura, e adiciona quatro coisas: mais de três rotinas ativas, a quantidade disponível, o Resumo (seus registros num eixo de tempo comum, em qualquer período; os últimos 30 dias continuam gratuitos no Diário) e o relatório em PDF. O que você já tem continua funcionando, comprando ou não.</dd>
+      <dt>O que é gratuito, e o que o Vialog Pro adiciona?</dt>
+      <dd>Registrar, lembretes, o diário, o histórico, os locais, o Bloqueio do app, a exportação CSV, o backup, a restauração e apagar são gratuitos e continuam gratuitos. O Vialog Pro é uma compra única, não uma assinatura, e adiciona quatro coisas: mais de três rotinas ativas, a quantidade disponível, o Resumo (seus registros num eixo de tempo comum, em qualquer período; os últimos 30 dias continuam gratuitos no Diário) e o relatório em PDF. O que você já tem continua funcionando, comprando ou não.</dd>
 
-    <dt>Comprei o Vialog Pro. Como recupero a compra num celular novo?</dt>
-    <dd>Abra os Ajustes dentro do Vialog, depois Vialog Pro, e toque em <strong>Restaurar compras</strong>, com a mesma Conta Apple usada na compra. O Compartilhamento Familiar está ativado, então quem compartilha compras com você também recebe. Seus registros são à parte: transfira-os com um arquivo de backup ou por um backup do iPhone.</dd>
+      <dt>Comprei o Vialog Pro. Como recupero a compra num celular novo?</dt>
+      <dd>Abra os Ajustes dentro do Vialog, depois Vialog Pro, e toque em <strong>Restaurar compras</strong>, com a mesma Conta Apple usada na compra. O Compartilhamento Familiar está ativado, então quem compartilha compras com você também recebe. Seus registros são à parte: transfira-os com um arquivo de backup ou por um backup do iPhone.</dd>
 
-    <dt>Um lembrete não chegou.</dt>
-    <dd>Os lembretes são entregues pelo iOS, e a entrega não é garantida. Verifique se as notificações estão permitidas para o Vialog nos Ajustes do iOS e se um modo de Foco não as está retendo. <strong>Ajustes › Verificar lembretes</strong> no Vialog mostra quantos lembretes estão registrados e até que data estão cobertos.</dd>
+      <dt>Um lembrete não chegou.</dt>
+      <dd>Os lembretes são entregues pelo iOS, e a entrega não é garantida. Verifique se as notificações estão permitidas para o Vialog nos Ajustes do iOS e se um modo de Foco não as está retendo. <strong>Ajustes › Verificar lembretes</strong> no Vialog mostra quantos lembretes estão registrados e até que data estão cobertos.</dd>
 
-    <dt>Por que o lembrete não diz qual é a rotina?</dt>
-    <dd>Porque qualquer pessoa que veja o celular pode ler a Tela Bloqueada. O lembrete padrão diz apenas que você tem uma aplicação programada. Se preferir ver ali o nome e a quantidade da rotina, ative <strong>Mostrar nome da rotina e quantidade</strong> nos Ajustes.</dd>
+      <dt>Por que o lembrete não diz qual é a rotina?</dt>
+      <dd>Porque qualquer pessoa que veja o celular pode ler a Tela Bloqueada. O lembrete padrão diz apenas que você tem uma aplicação programada. Se preferir ver ali o nome e a quantidade da rotina, ative <strong>Mostrar nome da rotina e quantidade</strong> nos Ajustes.</dd>
 
-    <dt>Posso alterar ou remover um registro?</dt>
-    <dd>Sim. Abra o registro em Hoje ou no Diário para corrigir a quantidade, o horário, o local ou a nota, ou para removê-lo. Uma aplicação programada cujo registro foi removido volta a “Não registrada”. Cada alteração é guardada como uma revisão.</dd>
+      <dt>Posso alterar ou remover um registro?</dt>
+      <dd>Sim. Abra o registro em Hoje ou no Diário para corrigir a quantidade, o horário, o local ou a nota, ou para removê-lo. Uma aplicação programada cujo registro foi removido volta a “Não registrada”. Cada alteração é guardada como uma revisão.</dd>
 
-    <dt>Por que uma unidade nunca é convertida?</dt>
-    <dd>Porque uma conversão depende de uma concentração que o Vialog não conhece e não deve supor. As quantidades ficam exatamente como você digitou, na unidade que você escolheu, e um registro em outra unidade aparece como tal, sem ser somado aos outros.</dd>
+      <dt>Por que uma unidade nunca é convertida?</dt>
+      <dd>Porque uma conversão depende de uma concentração que o Vialog não conhece e não deve supor. As quantidades ficam exatamente como você digitou, na unidade que você escolheu, e um registro em outra unidade aparece como tal, sem ser somado aos outros.</dd>
 
-    <dt>Como apago tudo?</dt>
-    <dd>Ajustes, depois Exportar, backup e apagar, depois <strong>Apagar todos os registros</strong>. Remover o app também remove tudo o que ele guardou. Não há nada guardado em outro lugar para pedir.</dd>
-  </dl>
+      <dt>Como apago tudo?</dt>
+      <dd>Ajustes, depois Exportar, backup e apagar, depois <strong>Apagar todos os registros</strong>. Remover o app também remove tudo o que ele guardou. Não há nada guardado em outro lugar para pedir.</dd>
+    </dl>
+  </section>
 
   <footer>
     <a href="help/">Ajuda</a> · <a href="../privacy.html">Política de privacidade</a> (em inglês) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-pt-br&amp;l=pt-br&amp;mt=8">Vialog na App Store</a> · © 2026 Colin Sergay

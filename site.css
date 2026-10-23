@@ -1,0 +1,315 @@
+/* The site's one stylesheet: the landing page in every language, help, the blog and the
+   privacy policy. It follows the app: the teal ground washing to a pale page, paper for a
+   card, a record slip's tear line, and an expanded face for display (the app's is SF Pro
+   expanded; Archivo is self-hosted so the site asks no other server for anything). */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --ground-top: #d3e9e6;   /* the accent as first light */
+  --ground: #eef4f3;
+  --paper: #ffffff;
+  --ink: #102426;
+  --muted: #4f6466;
+  --line: #d3e0df;
+  --accent: #0d707a;
+  --accent-ink: #0a5a62;
+  --mint: #8fdccd;         /* the icon's dot */
+  --deep: #0e4b51;         /* the icon's deep teal */
+  --on-deep: #e6f4f2;
+  --track: rgba(13, 112, 122, .13);
+  --shadow: 14, 75, 81;
+
+  --face: "Archivo", -apple-system, system-ui, "Hiragino Sans", "Apple SD Gothic Neo", "Helvetica Neue", sans-serif;
+  --measure: 36em;
+  --page: 1080px;
+  --gutter: clamp(20px, 5vw, 64px);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground-top: #11393c;
+    --ground: #0b1a1c;
+    --paper: #13282b;
+    --ink: #e5f1ef;
+    --muted: #9db3b2;
+    --line: #23403f;
+    --accent: #5cc7cc;
+    --accent-ink: #7fd6d6;
+    --mint: #9fe3d7;
+    --deep: #0f3a3e;
+    --on-deep: #e5f1ef;
+    --track: rgba(92, 199, 204, .2);
+    --shadow: 0, 0, 0;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: linear-gradient(var(--ground-top), var(--ground) 560px) no-repeat, var(--ground);
+  font: 400 1.0625rem/1.65 var(--face);
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, dt, strong { font-weight: 650; }
+h1, h2 {
+  font-stretch: 125%;
+  font-weight: 700;
+  letter-spacing: -.012em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 2.6rem); margin: 0 0 .4em; }
+h2 { font-size: 1.3rem; margin: 2.4em 0 .6em; }
+p { margin: 0 0 1em; }
+p.lede { font-size: 1.2rem; line-height: 1.55; color: var(--muted); margin-bottom: 1.6em; text-wrap: pretty; }
+a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: .18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+ul, ol { margin: 0 0 1em; padding-left: 1.3em; }
+li { margin-bottom: .4em; }
+li::marker { color: var(--accent); }
+code, pre { font: .9em/1.5 ui-monospace, "SF Mono", Menlo, monospace; }
+code { background: var(--track); padding: .1em .3em; border-radius: 5px; }
+pre {
+  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+  padding: 16px 18px; overflow-x: auto; margin: 0 0 1.2em;
+}
+pre code { background: none; padding: 0; }
+.path { font-weight: 600; color: var(--ink); }
+.standing { color: var(--muted); font-size: .95rem; }
+
+/* A reading page: help, the blog, the privacy policy. */
+main { max-width: calc(var(--measure) + 48px); margin: 0 auto; padding: 40px 24px 72px; }
+nav.crumbs {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: .9rem; color: var(--muted); margin-bottom: 56px;
+}
+nav.crumbs img { width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(var(--shadow), .18); }
+nav.crumbs a { color: var(--muted); text-decoration: none; }
+nav.crumbs a:hover { color: var(--accent-ink); }
+.byline, .source { color: var(--muted); font-size: .92rem; }
+
+/* Paper: a card, drawn as the app's record slip — a colour band over a perforated tear line,
+   with a notch each side where the slip would tear. */
+.card {
+  position: relative;
+  background: var(--paper);
+  border-radius: 22px;
+  padding: 26px 28px 24px;
+  margin: 40px 0 0;
+  padding-top: 32px;
+  box-shadow: inset 0 7px 0 var(--accent), 0 1px 0 rgba(var(--shadow), .04), 0 18px 40px -18px rgba(var(--shadow), .28);
+}
+.card p:last-child { margin: 0; }
+.card h2 {
+  position: relative;
+  margin: 0 0 18px;
+  padding-bottom: 18px;
+  background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px) bottom / 100% 2px no-repeat;
+}
+.card h2::before, .card h2::after {
+  content: ""; position: absolute; bottom: -8px;
+  width: 18px; height: 18px; border-radius: 50%; background: var(--ground);
+}
+.card h2::before { left: -37px; }
+.card h2::after { right: -37px; }
+
+ul.articles { list-style: none; padding: 0; margin: 0; }
+ul.articles li { margin: 0; border-top: 1px solid var(--line); }
+ul.articles li:last-child { border-bottom: 1px solid var(--line); }
+ul.articles a { display: block; padding: 18px 0; text-decoration: none; color: var(--muted); }
+ul.articles a strong {
+  display: block; color: var(--ink); font-stretch: 112%; font-size: 1.08rem; margin-bottom: 2px;
+}
+ul.articles a:hover strong { color: var(--accent-ink); }
+ul.articles a span { font-size: .95rem; }
+
+footer {
+  margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--line);
+  color: var(--muted); font-size: .88rem;
+}
+footer a { color: var(--muted); }
+footer a:hover { color: var(--accent-ink); }
+footer .languages strong { color: var(--ink); font-weight: 600; }
+
+/* ——— The landing page ——— */
+
+.home main { max-width: none; padding: 0; }
+.home .hero,
+.home section:not(.private),
+.home footer { width: min(var(--page), 100% - 2 * var(--gutter)); margin-inline: auto; }
+
+.hero { padding: 56px 0 24px; display: grid; gap: 0 56px; align-items: center; }
+.hero > img {
+  width: 76px; height: 76px; border-radius: 18px; display: block; margin-bottom: 28px;
+  box-shadow: 0 12px 28px -8px rgba(var(--shadow), .45);
+}
+.hero h1 {
+  font-size: clamp(3.6rem, 2rem + 8vw, 7rem);
+  font-weight: 760;
+  letter-spacing: -.035em;
+  line-height: .92;
+  margin: 0 0 .22em;
+}
+.hero > p {
+  font-size: clamp(1.3rem, 1.1rem + .9vw, 1.7rem);
+  line-height: 1.3;
+  font-stretch: 108%;
+  max-width: 22ch;
+  margin: 0 0 32px;
+  text-wrap: balance;
+}
+.badge { display: inline-flex; justify-self: start; border-radius: 10px; }
+.badge picture, .badge img { display: block; }
+.badge img { height: 54px; width: auto; }
+.badge:hover { filter: brightness(1.12); }
+.price { color: var(--muted); font-size: .92rem; margin-top: 14px; }
+
+/* The day as a sun path: midnight at the foot, noon at the top, a hand for now. When,
+   never a score — the same ring Today draws, and the icon's own. */
+.day-ring { width: min(100%, 440px); justify-self: center; margin: 48px 0 0; position: relative; }
+.day-ring::before {
+  content: ""; position: absolute; inset: 12%; border-radius: 50%;
+  background: radial-gradient(circle, var(--paper) 0, transparent 70%);
+  opacity: .8; z-index: -1;
+}
+.day-ring svg { display: block; width: 100%; height: auto; overflow: visible; }
+.day-ring .track { fill: none; stroke: var(--track); stroke-width: 22; }
+.day-ring .arc { fill: none; stroke: var(--accent); stroke-width: 22; stroke-linecap: round; }
+.day-ring .tick { stroke: var(--muted); stroke-width: 1.5; opacity: .35; }
+.day-ring .tick.major { opacity: .8; stroke-width: 2; }
+.day-ring .hour {
+  fill: var(--muted); font: 600 13px var(--face); font-stretch: 125%;
+  text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums;
+}
+.day-ring .hand { fill: var(--mint); stroke: var(--paper); stroke-width: 5; filter: drop-shadow(0 0 10px var(--mint)); }
+.day-ring .entry { fill: var(--paper); stroke: var(--accent); stroke-width: 3; stroke-dasharray: 4 4; transition: fill .4s, stroke-dasharray .4s; }
+.day-ring .entry.past { fill: var(--ground); stroke: var(--ground); stroke-width: 2; stroke-dasharray: none; }
+.day-ring .now {
+  fill: var(--ink); font: 650 34px var(--face); font-stretch: 125%;
+  text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+}
+
+/* Sections: a heading column and a reading column. */
+.home section { padding: 72px 0 0; }
+.home section > h2 { margin: 0 0 20px; font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem); }
+
+.home .intro { padding-top: 40px; }
+.intro .lede {
+  font-size: clamp(1.25rem, 1.05rem + .8vw, 1.6rem); line-height: 1.45;
+  color: var(--ink); max-width: 30em; font-stretch: 104%;
+  margin-bottom: 56px;
+}
+.shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 3vw, 40px); margin: 0 0 40px; align-items: start; }
+.shots img {
+  width: 100%; height: auto; display: block;
+  border-radius: clamp(18px, 3.2vw, 38px);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 60px -28px rgba(var(--shadow), .5);
+}
+.shots img:nth-child(2) { margin-top: clamp(0px, 6vw, 72px); }
+.shots img:nth-child(3) { margin-top: clamp(0px, 3vw, 36px); }
+.intro .standing {
+  max-width: 34em; padding-left: 16px; border-left: 3px solid var(--accent); margin: 0;
+}
+
+ul.plain { list-style: none; padding: 0; margin: 0; }
+.does ul.plain { display: grid; gap: 0 40px; }
+.does li {
+  margin: 0; padding: 18px 0 20px; border-top: 1px solid var(--line); color: var(--muted);
+}
+.does li strong { display: block; color: var(--ink); font-stretch: 112%; font-size: 1.08rem; margin-bottom: 4px; }
+
+.home .private {
+  margin-top: 88px;
+  padding: 72px max(var(--gutter), (100% - var(--page)) / 2);
+  background: var(--deep);
+  color: var(--on-deep);
+  position: relative;
+  overflow: hidden;
+}
+.private::after {
+  /* The ring again, very faint, running off the band's edge. */
+  content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -140px;
+  border-radius: 50%; border: 26px solid rgba(143, 220, 205, .09);
+}
+.private h2 { color: var(--mint); }
+.private p { font-size: clamp(1.1rem, 1rem + .4vw, 1.28rem); line-height: 1.6; max-width: 34em; margin: 0; position: relative; z-index: 1; }
+.private a { color: var(--mint); }
+
+.links ul.plain li { margin: 0; border-top: 1px solid var(--line); }
+.links ul.plain li:last-child { border-bottom: 1px solid var(--line); }
+.links ul.plain a {
+  display: block; padding: 16px 0; text-decoration: none; color: var(--ink);
+  font-stretch: 108%; font-weight: 550; font-size: 1.08rem;
+}
+.links ul.plain a:hover { color: var(--accent-ink); }
+
+.contact .card { margin: 0; max-width: 40em; }
+
+.faq dl { margin: 0; }
+.faq dt { font-stretch: 108%; font-size: 1.08rem; padding-top: 22px; border-top: 1px solid var(--line); }
+.faq dt:first-child { border-top: 0; padding-top: 0; }
+.faq dd { margin: 6px 0 22px; color: var(--muted); }
+
+.home footer { margin-top: 96px; padding-bottom: 56px; }
+
+@media (min-width: 640px) {
+  .does ul.plain { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 920px) {
+  .hero { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); padding-top: 88px; }
+  .hero > :not(.day-ring) { grid-column: 1; }
+  .day-ring { grid-column: 2; grid-row: 1 / span 5; margin: 0; }
+
+  .home section:not(.intro) {
+    display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 0 56px; align-items: start;
+  }
+  .home section:not(.intro) > h2 { grid-column: 1; position: sticky; top: 32px; }
+  .home section:not(.intro) > :not(h2) { grid-column: 2; }
+}
+
+@media (max-width: 520px) {
+  .day-ring { width: min(80%, 300px); margin-top: 40px; }
+  .shots {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 64%;
+    overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 20px 12px;
+    margin-inline: -20px; scroll-padding: 20px;
+  }
+  .shots img:nth-child(n) { scroll-snap-align: start; margin-top: 0; }
+  .card { padding: 22px 20px 20px; }
+  .card h2::before { left: -29px; }
+  .card h2::after { right: -29px; }
+}
+
+@media (prefers-contrast: more) {
+  :root { --muted: var(--ink); --line: var(--muted); }
+  body { background: var(--ground); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .day-ring .entry { transition: none; }
+}
