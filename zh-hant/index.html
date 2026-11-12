@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog — 注射方案的私密日誌</title>
+<meta name="description" content="在 iPhone 上保存你的注射時間表、記錄、部位和備註。沒有帳號，沒有分析，沒有伺服器：除非你匯出，否則任何內容都不會離開 iPhone。">
+<link rel="canonical" href="https://vialog.club/zh-hant/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://vialog.club/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://vialog.club/zh-hant/">
+<link rel="alternate" hreflang="sv" href="https://vialog.club/sv/">
+<link rel="alternate" hreflang="id" href="https://vialog.club/id/">
+<link rel="alternate" hreflang="da" href="https://vialog.club/da/">
+<link rel="alternate" hreflang="nb" href="https://vialog.club/nb/">
+<link rel="alternate" hreflang="pl" href="https://vialog.club/pl/">
+<link rel="alternate" hreflang="tr" href="https://vialog.club/tr/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog — 注射方案的私密日誌">
+<meta property="og:description" content="在 iPhone 上保存你的注射時間表、記錄、部位和備註。沒有帳號，沒有分析，沒有伺服器：除非你匯出，否則任何內容都不會離開 iPhone。">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/zh-hant/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="iPhone 上的 Vialog：一個方案的預定量隨時間的變化，以及列出待記錄安排的「今天」。">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "為你正在執行的注射方案準備的 iPhone 私密日誌：時間表、記錄、部位、狀態記錄和備註都保存在你的裝置上，不需要帳號，沒有伺服器。",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>你的注射方案，用你自己的話記錄。</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-zh-hant&amp;l=zh-hant-tw&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="在 App Store 下載 Vialog" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">免費。只有一項可選購買，絕不是訂閱。</div>
+  </div>
+
+  <p class="lede">為已在執行注射方案的人準備的 iPhone 私密日誌：你用了什麼、用了多少、何時、在哪裡，以及感覺如何。名稱、量和時間表都由你自己填寫。Vialog 負責保存記錄。</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="今天：今天要記錄的方案、下一項安排和本週" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="記錄注射：量、時間和部位都在一張記錄單上" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="一個方案的預定量隨時間的變化，每筆記錄顯示為一個點" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">這是個人記錄。本 App 不推薦任何產品，也不推薦對治療的任何改變。它從不替你選擇任何東西、計算該用的量，或建議改變。</p>
+
+  <h2>Vialog 能做什麼</h2>
+  <ul class="plain">
+    <li><strong>保存你的方案。</strong>每個方案由你自己命名，設定時間和預定量，使用你一直在用的單位。不查詢、不建議、不換算任何內容。</li>
+    <li><strong>提醒你。</strong>在每個安排的時間，由 iOS 在裝置上傳送提醒。預設情況下，提醒只說明你有一項安排；只有在你開啟相應設定後，方案名稱和量才會顯示在鎖定畫面上。</li>
+    <li><strong>幾秒完成記錄。</strong>確認量，需要的話選擇部位，加入備註。過去的部位一直看得到，讓你知道之前記錄過哪些位置。</li>
+    <li><strong>寫日誌。</strong>精力、睡眠和食慾的狀態記錄、用你自己的話描述的症狀、身體測量和檢驗結果，任何一天都可以記錄；除非你將它們連結，否則它們與你的方案分開保存。</li>
+    <li><strong>顯示你的歷史。</strong>按日列出每筆記錄，可以篩選，並以圖表顯示你記錄的內容隨時間的變化。</li>
+    <li><strong>計算你手邊的量（如果你需要）。</strong>輸入你的現有量，即可看到它可用至何時，由你自己的記錄逐次扣減。它只報告數量和日期，從不提示你去取得任何東西。</li>
+    <li><strong>隨你帶走。</strong>將所有內容匯出為 CSV 或 PDF 報告（PDF 需要 Vialog Pro），備份成單一檔案並在新 iPhone 上復原，或全部刪除。</li>
+  </ul>
+
+  <h2>從設計就保護隱私</h2>
+  <p>沒有帳號。不需要登入。沒有廣告，沒有分析，沒有追蹤。你的記錄保存在你的 iPhone 上；如果你使用手錶 App，也會顯示在你的 Apple Watch 上；Vialog 沒有可以接收記錄的伺服器。可選的 App 鎖定會在 App 打開前要求 Face ID、Touch ID 或密碼，並在 App 切換器中顯示空白遮蔽畫面。請閱讀<a href="../privacy.html">隱私權政策</a>（英文）。</p>
+
+  <h2>說明</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">記錄注射部位</a></li>
+    <li><a href="help/reminders.html">配合你方案的提醒</a></li>
+    <li><a href="help/apple-watch.html">從 Apple Watch、小工具和 Siri 記錄</a></li>
+    <li><a href="help/export-for-appointment.html">把記錄帶去看診</a></li>
+    <li><a href="help/no-server.html">Vialog 為什麼沒有伺服器</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">聯絡我們</h2>
+    <p>歡迎提出問題、回報錯誤和提出需求。請寄電子郵件至 <a href="mailto:csergay@gmail.com">csergay@gmail.com</a>，你會收到回覆。</p>
+    <p style="margin:0">附上你的 iOS 版本、「設定」中顯示的 Vialog 版本和建置版本號碼，以及出問題時你正在做什麼，會很有幫助。</p>
+  </div>
+
+  <h2 id="questions">常見問題</h2>
+  <dl>
+    <dt>我的記錄保存在哪裡？</dt>
+    <dd>保存在你的 iPhone 上，在 App 自己的儲存空間中，受裝置密碼保護。如果你將 iPhone 備份到 iCloud 或電腦，App 的資料會依照 Apple 的條款包含在該備份中。其他任何地方都不保存任何內容。</dd>
+
+    <dt>Vialog 會告訴我該用什麼或何時用嗎？</dt>
+    <dd>不會。它依照你輸入的量和時間，記錄你正在執行的方案。它從不替你選擇產品、計算該用的量、建議部位或推薦任何改變。如果你的方案有需要改變的地方，那是你與為你開立處方的人之間要討論的事。</dd>
+
+    <dt>哪些是免費的，Vialog Pro 增加了什麼？</dt>
+    <dd>記錄、提醒、日誌、歷史、部位、App 鎖定、CSV 匯出、備份、復原和刪除都是免費的，而且會一直免費。Vialog Pro 是一次性購買，不是訂閱，增加四項內容：三個以上的使用中方案、現有量、回顧（在任意時間範圍內把你的記錄放在同一條時間軸上；最近 30 天在日誌中仍然免費），以及 PDF 報告。無論你是否購買，你已有的一切都會繼續正常運作。</dd>
+
+    <dt>我購買了 Vialog Pro。如何在新 iPhone 上取回？</dt>
+    <dd>在 Vialog 中打開「設定」，然後選擇 Vialog Pro，在登入購買時所用的同一個 Apple 帳號的情況下，點一下<strong>回復購買項目</strong>。已開啟家人共享，所以與你共享購買項目的人也能使用。你的記錄是分開的：請透過備份檔案或 iPhone 備份移轉。</dd>
+
+    <dt>沒有收到提醒。</dt>
+    <dd>提醒由 iOS 傳送，無法保證送達。請檢查 iOS「設定」中是否允許 Vialog 傳送通知，以及專注模式是否攔下了通知。Vialog 中的<strong>設定 › 檢查提醒</strong>會顯示已登記的提醒數量，以及涵蓋到的日期。</dd>
+
+    <dt>為什麼提醒不顯示是哪個方案？</dt>
+    <dd>因為任何看得到你 iPhone 的人都能讀到鎖定畫面。預設的提醒只說明你有一項安排。如果你希望在那裡看到方案名稱和量，請在「設定」中開啟<strong>顯示方案名稱和量</strong>。</dd>
+
+    <dt>我可以修改或刪除一筆記錄嗎？</dt>
+    <dd>可以。從「今天」或「日誌」打開記錄，即可更正它的量、時間、部位或備註，或將它刪除。刪除一項安排的記錄後，該安排會回到「未記錄」。每次修改都會保留為一個修訂版本。</dd>
+
+    <dt>為什麼從不換算單位？</dt>
+    <dd>因為換算取決於濃度，而 Vialog 不知道濃度，也不應該假設。量完全依照你輸入的樣子保存，使用你選擇的單位；不同單位的記錄會照原樣顯示，而不會合併計算。</dd>
+
+    <dt>如何刪除全部內容？</dt>
+    <dd>設定 › 匯出、備份和刪除 › <strong>刪除所有記錄</strong>。刪除 App 也會刪除它保存的所有內容。其他地方沒有保存任何內容，所以不需要另外申請刪除。</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">說明</a> · <a href="../privacy.html">隱私權政策</a>（英文） · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-zh-hant&amp;l=zh-hant-tw&amp;mt=8">App Store 上的 Vialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <strong lang="zh-Hant">繁體中文</strong> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../id/" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../nb/" hreflang="nb" lang="nb">Norsk bokmål</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

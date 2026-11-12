@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog — enjeksiyon rutininiz için özel bir günlük</title>
+<meta name="description" content="Enjeksiyon programınızı, kayıtlarınızı, bölgelerinizi ve notlarınızı iPhone'unuzda tutun. Hesap yok, analiz yok, sunucu yok: siz dışa aktarmadıkça hiçbir şey aygıttan çıkmaz.">
+<link rel="canonical" href="https://vialog.club/tr/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://vialog.club/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://vialog.club/zh-hant/">
+<link rel="alternate" hreflang="sv" href="https://vialog.club/sv/">
+<link rel="alternate" hreflang="id" href="https://vialog.club/id/">
+<link rel="alternate" hreflang="da" href="https://vialog.club/da/">
+<link rel="alternate" hreflang="nb" href="https://vialog.club/nb/">
+<link rel="alternate" hreflang="pl" href="https://vialog.club/pl/">
+<link rel="alternate" hreflang="tr" href="https://vialog.club/tr/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog — enjeksiyon rutininiz için özel bir günlük">
+<meta property="og:description" content="Enjeksiyon programınızı, kayıtlarınızı, bölgelerinizi ve notlarınızı iPhone'unuzda tutun. Hesap yok, analiz yok, sunucu yok: siz dışa aktarmadıkça hiçbir şey aygıttan çıkmaz.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/tr/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="iPhone'da Vialog: bir rutinin zaman içindeki planlanan miktarı ve kaydedilecek planlı zamanlarıyla Bugün ekranı.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "Zaten uyguladığınız bir enjeksiyon rutini için özel bir iPhone günlüğü: program, kayıtlar, bölgeler, check-in'ler ve notlar; hesap ve sunucu olmadan aygıtınızda saklanır.",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>Enjeksiyon rutininiz, kendi ifadelerinizle kayıt altında.</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-tr&amp;l=tr&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="Vialog'u App Store'dan indirin" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">Ücretsiz. İsteğe bağlı tek bir satın alma; abonelik asla yok.</div>
+  </div>
+
+  <p class="lede">Zaten bir enjeksiyon rutini uygulayan kişiler için özel bir iPhone günlüğü: ne kullandığınız, ne kadar, ne zaman, nerede ve nasıl hissettiğiniz. Adları, miktarları ve programı siz belirlersiniz. Vialog kaydı tutar.</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="Bugün: bugün kaydedilecek rutinler, sıradaki planlı zaman ve bu hafta" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="Bir enjeksiyonu kaydetmek: miktar, saat ve bölge tek bir fişte" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="Bir rutinin zaman içindeki planlanan miktarı; her kayıt bir nokta olarak" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">Kişisel bir kayıt. Bu uygulama ürün ya da tedavi değişikliği önermez. Hiçbir şey seçmez, miktar hesaplamaz ve değişiklik önermez.</p>
+
+  <h2>Vialog ne yapar</h2>
+  <ul class="plain">
+    <li><strong>Rutinlerinizi tutar.</strong> Her birine kendiniz ad verirsiniz; saatleri ve planlanan miktarı, zaten kullandığınız birimlerle belirlersiniz. Hiçbir şey aranmaz, önerilmez ya da dönüştürülmez.</li>
+    <li><strong>Size hatırlatır.</strong> Her planlı saatte, iOS tarafından aygıtta iletilen bir hatırlatıcı. Varsayılan olarak yalnızca planlı bir zamanınız olduğunu söyler; rutinin adı ve miktarı Kilitli Ekran'da yalnızca siz bunu açarsanız görünür.</li>
+    <li><strong>Saniyeler içinde kaydeder.</strong> Miktarı onaylayın, isterseniz bir bölge seçin, bir not ekleyin. Önceki bölgeler görünür kalır; böylece daha önce nereleri kaydettiğinizi görebilirsiniz.</li>
+    <li><strong>Günlük tutar.</strong> Enerji, uyku ve iştah üzerine check-in'ler, kendi sözcüklerinizle belirtiler, vücut ölçümleri ve tahlil sonuçları; herhangi bir günde eklenir ve siz bağlamadıkça rutinlerinizden ayrı tutulur.</li>
+    <li><strong>Geçmişinizi gösterir.</strong> Filtrelerle birlikte güne göre her kayıt ve zaman içinde kaydettiklerinizin bir grafiği.</li>
+    <li><strong>İsterseniz elinizdekini sayar.</strong> Eldeki miktarı girin ve neye yettiğini görün; miktar kendi kayıtlarınızla azalarak sayılır. Bir sayı ve bir gün bildirir; sizi asla bir şey edinmeye yönlendirmez.</li>
+    <li><strong>Sizinle birlikte gider.</strong> Her şeyi CSV ya da PDF raporu olarak dışa aktarın (PDF, Vialog Pro ile), tek bir dosyaya yedekleyin, yeni bir iPhone'da geri yükleyin ya da tümünü silin.</li>
+  </ul>
+
+  <h2>Tasarımı gereği gizli</h2>
+  <p>Hesap yok. Oturum açma yok. Reklam yok, analiz yok, izleme yok. Kayıtlarınız iPhone'unuzda saklanır, Watch uygulamasını kullanıyorsanız Apple Watch'unuzda gösterilir ve Vialog'un bunları gönderebileceği bir sunucusu yoktur. İsteğe bağlı Uygulama Kilidi, uygulama açılmadan önce Face ID, Touch ID ya da parolanızı ister ve uygulama değiştiricide boş bir örtü gösterir. Ayrıntılar <a href="../privacy.html">gizlilik politikasında</a> (İngilizce).</p>
+
+  <h2>Yardım</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">Enjeksiyon bölgelerinin kaydını tutmak</a></li>
+    <li><a href="help/reminders.html">Rutininize uyan hatırlatıcılar</a></li>
+    <li><a href="help/apple-watch.html">Apple Watch, widget'lar ve Siri ile kaydetmek</a></li>
+    <li><a href="help/export-for-appointment.html">Kayıtlarınızı randevuya götürmek</a></li>
+    <li><a href="help/no-server.html">Vialog'un neden sunucusu yok</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">İletişim</h2>
+    <p>Sorularınız, hata bildirimleriniz ve istekleriniz memnuniyetle karşılanır. <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> adresine e-posta gönderin; yanıt alırsınız.</p>
+    <p style="margin:0">iOS sürümünüzü, Ayarlar'da görünen Vialog sürümünü ve derleme numarasını ve bir sorun çıktığında ne yaptığınızı yazmanız yardımcı olur.</p>
+  </div>
+
+  <h2 id="questions">Sık sorulan sorular</h2>
+  <dl>
+    <dt>Kayıtlarım nerede saklanıyor?</dt>
+    <dd>iPhone'unuzda, uygulamanın kendi depolama alanında, aygıt parolasıyla korunarak. iPhone'unuzu iCloud'a ya da bir bilgisayara yedeklerseniz uygulamanın verileri, Apple'ın koşulları çerçevesinde bu yedeğin bir parçası olur. Başka hiçbir yerde bir şey tutulmaz.</dd>
+
+    <dt>Vialog bana neyi ya da ne zaman kullanacağımı söyler mi?</dt>
+    <dd>Hayır. Zaten uyguladığınız rutini, girdiğiniz miktarlarda ve saatlerde kaydeder. Asla bir ürün seçmez, miktar hesaplamaz, bölge önermez ya da değişiklik tavsiye etmez. Rutininizde bir şeyin değişmesi gerekiyorsa bu, rutini reçete eden kişiyle konuşulacak bir konudur.</dd>
+
+    <dt>Neler ücretsiz, Vialog Pro neler ekler?</dt>
+    <dd>Kaydetme, hatırlatıcılar, günlük, geçmiş, bölgeler, Uygulama Kilidi, CSV dışa aktarma, yedekleme, geri yükleme ve silme ücretsizdir ve ücretsiz kalır. Vialog Pro abonelik değil, tek seferlik bir satın almadır ve dört şey ekler: üçten fazla etkin rutin, eldeki miktar, Özet (kayıtlarınız istediğiniz aralıkta tek bir zaman ekseninde; son 30 gün Günlük'te ücretsiz kalır) ve PDF raporu. Zaten sahip olduğunuz her şey, satın alsanız da almasanız da çalışmaya devam eder.</dd>
+
+    <dt>Vialog Pro'yu satın aldım. Yeni bir iPhone'da nasıl geri alırım?</dt>
+    <dd>Vialog'da Ayarlar'ı, ardından Vialog Pro'yu açın ve satın aldığınız Apple Hesabı ile oturum açmışken <strong>Satın alımları geri yükle</strong> düğmesine dokunun. Aile Paylaşımı açıktır; satın alımlarınızı paylaştığınız kişiler de Vialog Pro'yu alır. Kayıtlarınız ayrıdır: onları bir yedek dosyasıyla ya da bir iPhone yedeğiyle taşıyın.</dd>
+
+    <dt>Bir hatırlatıcı gelmedi.</dt>
+    <dd>Hatırlatıcılar iOS tarafından iletilir ve iletim garanti edilmez. iOS Ayarlar'ında Vialog için bildirimlere izin verildiğini ve bir Odak modunun onları bekletmediğini denetleyin. Vialog'daki <strong>Ayarlar › Hatırlatıcıları kontrol et</strong>, iOS'ta kaç hatırlatıcının ayarlı olduğunu ve hangi tarihe kadar planlandıklarını gösterir.</dd>
+
+    <dt>Hatırlatıcı neden hangi rutin olduğunu söylemiyor?</dt>
+    <dd>Çünkü Kilitli Ekran'ı, telefonu görebilen herkes okuyabilir. Varsayılan hatırlatıcı yalnızca planlı bir zamanınız olduğunu söyler. Rutinin adını ve miktarını orada görmeyi tercih ederseniz Ayarlar'da <strong>Rutin adını ve miktarı göster</strong> seçeneğini açın.</dd>
+
+    <dt>Bir kaydı değiştirebilir ya da kaldırabilir miyim?</dt>
+    <dd>Evet. Miktarını, saatini, bölgesini ya da notunu düzeltmek veya kaydı kaldırmak için onu Bugün ya da Günlük ekranından açın. Kaldırılan planlı bir zaman yeniden “kaydedilmedi” durumuna döner. Her değişiklik bir revizyon olarak saklanır.</dd>
+
+    <dt>Bir birim neden hiç dönüştürülmüyor?</dt>
+    <dd>Çünkü bir dönüştürme, Vialog'un bilmediği ve varsaymaması gereken bir konsantrasyona bağlıdır. Miktarlar tam olarak yazdığınız gibi, seçtiğiniz birimde saklanır; farklı bir birimdeki kayıt, diğerlerine katılmak yerine olduğu gibi gösterilir.</dd>
+
+    <dt>Her şeyi nasıl silerim?</dt>
+    <dd>Ayarlar'ı, ardından Dışa aktarma, yedekleme ve silme bölümünü açın ve <strong>Tüm kayıtları sil</strong> düğmesine dokunun. Uygulamayı kaldırmak da depoladığı her şeyi kaldırır. Başka bir yerde tutulan ve istemeniz gereken hiçbir şey yoktur.</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">Yardım</a> · <a href="../privacy.html">Gizlilik politikası</a> (İngilizce) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-tr&amp;l=tr&amp;mt=8">App Store'da Vialog</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="../zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <a href="../id/" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../nb/" hreflang="nb" lang="nb">Norsk bokmål</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <strong lang="tr">Türkçe</strong></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

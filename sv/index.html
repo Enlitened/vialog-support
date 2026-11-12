@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog – en privat dagbok för din injektionsrutin</title>
+<meta name="description" content="En privat iPhone-dagbok för din injektionsrutin: schema, registreringar, ställen och anteckningar. Inget konto, ingen analys, ingen server: inget lämnar den om du inte exporterar det.">
+<link rel="canonical" href="https://vialog.club/sv/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://vialog.club/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://vialog.club/zh-hant/">
+<link rel="alternate" hreflang="sv" href="https://vialog.club/sv/">
+<link rel="alternate" hreflang="id" href="https://vialog.club/id/">
+<link rel="alternate" hreflang="da" href="https://vialog.club/da/">
+<link rel="alternate" hreflang="nb" href="https://vialog.club/nb/">
+<link rel="alternate" hreflang="pl" href="https://vialog.club/pl/">
+<link rel="alternate" hreflang="tr" href="https://vialog.club/tr/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog – en privat dagbok för din injektionsrutin">
+<meta property="og:description" content="En privat iPhone-dagbok för din injektionsrutin: schema, registreringar, ställen och anteckningar. Inget konto, ingen analys, ingen server: inget lämnar den om du inte exporterar det.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/sv/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vialog på iPhone: en rutins planerade mängd över tid, och Idag med tillfällena att registrera.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "En privat iPhone-dagbok för en injektionsrutin du redan följer: schema, registreringar, ställen, incheckningar och anteckningar, sparade på din enhet utan konto och utan server.",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>Din injektionsrutin, registrerad med dina egna ord.</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-sv&amp;l=sv&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="Hämta Vialog på App Store" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">Gratis. Ett valfritt köp, aldrig en prenumeration.</div>
+  </div>
+
+  <p class="lede">En privat iPhone-dagbok för dig som redan följer en injektionsrutin: vad du använde, hur mycket, när, var och hur du mådde. Du står för namnen, mängderna och schemat. Vialog håller ordning på registreringarna.</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="Idag: rutinerna att registrera idag, nästa tillfälle och den här veckan" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="Registrera en injektion: mängd, tid och ställe på ett och samma blad" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="En rutins planerade mängd över tid, med varje registrering som en punkt" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">En personlig dagbok. Den här appen rekommenderar varken produkter eller ändringar i en behandling. Den väljer aldrig något, beräknar aldrig en mängd och föreslår aldrig en ändring.</p>
+
+  <h2>Vad Vialog gör</h2>
+  <ul class="plain">
+    <li><strong>Håller ordning på dina rutiner.</strong> Du namnger var och en själv och anger tiderna och den planerade mängden, i de enheter du redan använder. Inget slås upp, föreslås eller räknas om.</li>
+    <li><strong>Påminner dig.</strong> En påminnelse vid varje planerad tid, levererad av iOS på enheten. Som standard säger den bara att du har ett planerat tillfälle; rutinens namn och mängd visas på låsskärmen bara om du slår på det.</li>
+    <li><strong>Registrerar på några sekunder.</strong> Bekräfta mängden, välj ett ställe om du vill och lägg till en anteckning. Tidigare ställen syns, så att du ser var du har registrerat förut.</li>
+    <li><strong>För dagbok.</strong> Incheckningar om energi, sömn och aptit, symtom med dina egna ord, kroppsmätningar och provsvar, vilken dag som helst, åtskilda från dina rutiner om du inte länkar dem.</li>
+    <li><strong>Visar din historik.</strong> Varje registrering per dag, med filter, och ett diagram över vad du har registrerat över tid.</li>
+    <li><strong>Räknar ditt förråd, om du vill.</strong> Ange hur mycket du har i förråd och se vad det räcker till, nedräknat av dina egna registreringar. Vialog anger ett antal och en dag; appen uppmanar dig aldrig att skaffa något.</li>
+    <li><strong>Följer med dig.</strong> Exportera allt som CSV eller som en PDF-rapport (PDF:en med Vialog Pro), säkerhetskopiera till en enda fil, återställ den på en ny telefon eller radera allt.</li>
+  </ul>
+
+  <h2>Privat från grunden</h2>
+  <p>Inget konto. Ingen inloggning. Ingen reklam, ingen analys, ingen spårning. Dina registreringar sparas på din iPhone, visas på din Apple Watch om du använder klockappen, och Vialog har ingen server att skicka dem till. Det valfria Applås ber om Face ID, Touch ID eller din lösenkod innan appen öppnas och visar ett tomt skydd i appväxlaren. Läs <a href="../privacy.html">integritetspolicyn</a> (på engelska).</p>
+
+  <h2>Hjälp</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">Föra en logg över injektionsställen</a></li>
+    <li><a href="help/reminders.html">Påminnelser som passar din rutin</a></li>
+    <li><a href="help/apple-watch.html">Registrera från Apple Watch, widgetar och Siri</a></li>
+    <li><a href="help/export-for-appointment.html">Ta med dina registreringar till ett besök</a></li>
+    <li><a href="help/no-server.html">Varför Vialog inte har någon server</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">Kontakt</h2>
+    <p>Frågor, felrapporter och önskemål är välkomna. Mejla <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> så får du svar.</p>
+    <p style="margin:0">Det hjälper om du anger din iOS-version, Vialogs version och byggnummer från Inställningar och vad du gjorde när något gick fel.</p>
+  </div>
+
+  <h2 id="questions">Vanliga frågor</h2>
+  <dl>
+    <dt>Var sparas mina registreringar?</dt>
+    <dd>På din iPhone, i appens egen lagring, skyddad av enhetens lösenkod. Om du säkerhetskopierar telefonen till iCloud eller en dator ingår appens data i den säkerhetskopian enligt Apples villkor. Inget sparas någon annanstans.</dd>
+
+    <dt>Säger Vialog åt mig vad jag ska ta eller när?</dt>
+    <dd>Nej. Appen registrerar den rutin du redan följer, i de mängder och vid de tider du anger. Den väljer aldrig en produkt, beräknar aldrig en mängd, föreslår aldrig ett ställe och rekommenderar aldrig en ändring. Om något i din rutin borde ändras är det ett samtal med den som ordinerar den.</dd>
+
+    <dt>Vad är gratis, och vad lägger Vialog Pro till?</dt>
+    <dd>Registrering, påminnelser, dagboken, historiken, ställen, Applås, CSV-export, säkerhetskopiering, återställning och radering är gratis och förblir gratis. Vialog Pro är ett engångsköp, inte en prenumeration, och lägger till fyra saker: fler än tre aktiva rutiner, förrådet, Översikt (dina registreringar på en tidsaxel över valfri period; de senaste 30 dagarna är fortsatt gratis i Dagbok) och PDF-rapporten. Allt du redan har fortsätter att fungera, oavsett om du köper eller inte.</dd>
+
+    <dt>Jag har köpt Vialog Pro. Hur får jag tillbaka det på en ny telefon?</dt>
+    <dd>Öppna Inställningar i Vialog, sedan Vialog Pro, och tryck på <strong>Återställ köp</strong>, inloggad med samma Apple-konto som du köpte med. Familjedelning är påslaget, så de du delar köp med får det också. Dina registreringar är separata: flytta dem med en säkerhetskopia från appen eller via en säkerhetskopia av din iPhone.</dd>
+
+    <dt>En påminnelse kom inte fram.</dt>
+    <dd>Påminnelser levereras av iOS, och leveransen är inte garanterad. Kontrollera att notiser är tillåtna för Vialog i iOS-inställningarna och att ett fokusläge inte håller tillbaka dem. <strong>Inställningar › Kontrollera påminnelser</strong> i Vialog visar hur många påminnelser som är registrerade och till vilket datum de gäller.</dd>
+
+    <dt>Varför säger påminnelsen inte vilken rutin det gäller?</dt>
+    <dd>Eftersom låsskärmen kan läsas av alla som kan se telefonen. Som standard säger påminnelsen bara att du har ett planerat tillfälle. Om du hellre vill se rutinens namn och mängd där slår du på <strong>Visa rutinens namn och mängd</strong> i Inställningar.</dd>
+
+    <dt>Kan jag ändra eller ta bort en registrering?</dt>
+    <dd>Ja. Öppna registreringen från Idag eller Dagbok för att rätta mängd, tid, ställe eller anteckning, eller för att ta bort den. Ett planerat tillfälle vars registrering tas bort blir ”Inte registrerad” igen. Varje ändring sparas som en revision.</dd>
+
+    <dt>Varför räknas en enhet aldrig om?</dt>
+    <dd>Eftersom en omräkning beror på en styrka som Vialog inte känner till och inte bör anta. Mängder sparas exakt som du skrev dem, i den enhet du valde, och en registrering i en annan enhet visas som just det i stället för att räknas in.</dd>
+
+    <dt>Hur raderar jag allt?</dt>
+    <dd>Inställningar, sedan Export, säkerhetskopia och radering, sedan <strong>Radera alla registreringar</strong>. Om du tar bort appen tas också allt den har sparat bort. Inget finns lagrat någon annanstans som kan begäras ut.</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">Hjälp</a> · <a href="../privacy.html">Integritetspolicy</a> (på engelska) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-sv&amp;l=sv&amp;mt=8">Vialog på App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="../zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <strong lang="sv">Svenska</strong> · <a href="../id/" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../nb/" hreflang="nb" lang="nb">Norsk bokmål</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>

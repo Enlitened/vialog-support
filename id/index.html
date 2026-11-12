@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-itunes-app" content="app-id=6809106441">
+<title>Vialog — jurnal pribadi untuk rutinitas suntikan</title>
+<meta name="description" content="Simpan jadwal, catatan, lokasi, dan keterangan suntikan Anda di iPhone. Tanpa akun, tanpa analitik, tanpa server: tidak ada yang keluar dari iPhone kecuali Anda mengekspornya.">
+<link rel="canonical" href="https://vialog.club/id/">
+<!-- languages:head -->
+<link rel="alternate" hreflang="en" href="https://vialog.club/">
+<link rel="alternate" hreflang="de" href="https://vialog.club/de/">
+<link rel="alternate" hreflang="fr" href="https://vialog.club/fr/">
+<link rel="alternate" hreflang="es" href="https://vialog.club/es/">
+<link rel="alternate" hreflang="es-419" href="https://vialog.club/es-419/">
+<link rel="alternate" hreflang="pt-BR" href="https://vialog.club/pt-br/">
+<link rel="alternate" hreflang="it" href="https://vialog.club/it/">
+<link rel="alternate" hreflang="nl" href="https://vialog.club/nl/">
+<link rel="alternate" hreflang="ja" href="https://vialog.club/ja/">
+<link rel="alternate" hreflang="ko" href="https://vialog.club/ko/">
+<link rel="alternate" hreflang="zh-Hans" href="https://vialog.club/zh-hans/">
+<link rel="alternate" hreflang="zh-Hant" href="https://vialog.club/zh-hant/">
+<link rel="alternate" hreflang="sv" href="https://vialog.club/sv/">
+<link rel="alternate" hreflang="id" href="https://vialog.club/id/">
+<link rel="alternate" hreflang="da" href="https://vialog.club/da/">
+<link rel="alternate" hreflang="nb" href="https://vialog.club/nb/">
+<link rel="alternate" hreflang="pl" href="https://vialog.club/pl/">
+<link rel="alternate" hreflang="tr" href="https://vialog.club/tr/">
+<link rel="alternate" hreflang="x-default" href="https://vialog.club/">
+<!-- /languages:head -->
+<link rel="icon" href="../icon-256.png">
+<link rel="apple-touch-icon" href="../icon-256.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vialog — jurnal pribadi untuk rutinitas suntikan">
+<meta property="og:description" content="Simpan jadwal, catatan, lokasi, dan keterangan suntikan Anda di iPhone. Tanpa akun, tanpa analitik, tanpa server: tidak ada yang keluar dari iPhone kecuali Anda mengekspornya.">
+<meta property="og:site_name" content="Vialog">
+<meta property="og:url" content="https://vialog.club/id/">
+<meta property="og:image" content="https://vialog.club/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Vialog di iPhone: jumlah rencana sebuah rutinitas dari waktu ke waktu, dan Hari Ini dengan waktu terjadwal yang perlu dicatat.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Vialog: Injection Journal",
+  "operatingSystem": "iOS",
+  "applicationCategory": "HealthApplication",
+  "description": "Jurnal iPhone pribadi untuk rutinitas suntikan yang sudah Anda jalani: jadwal, catatan, lokasi, check-in, dan keterangan, disimpan di perangkat Anda tanpa akun dan tanpa server.",
+  "image": "https://vialog.club/icon-256.png",
+  "screenshot": "https://vialog.club/og-image.jpg",
+  "installUrl": "https://apps.apple.com/app/id6809106441",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "AUD" },
+  "author": { "@type": "Person", "name": "Colin Sergay" }
+}
+</script>
+<!-- Public copy is bound by docs/REGULATORY_REVIEW.md §3: no substance, product or class
+     names, no injecting-equipment imagery, and nothing that recommends anything. This page
+     describes record-keeping and reminding, which is what the app does. -->
+<style>
+  :root {
+    --ground: #f3f5f6; --surface: #ffffff; --ink: #14181a;
+    --muted: #5f6b6e; --line: #dfe5e7; --accent: #0d707a;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #121416; --surface: #212427; --ink: #eef2f3;
+      --muted: #a2adb0; --line: #30363a; --accent: #5cc7cc;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--ink);
+    font: 16px/1.65 ui-sans-serif, -apple-system, system-ui, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 640px; margin: 0 auto; padding: 72px 24px 96px; }
+  h1 { font-size: 2.2rem; letter-spacing: -.02em; margin: 0 0 6px; }
+  h2 { font-size: 1.15rem; margin: 40px 0 8px; }
+  p { margin: 0 0 14px; }
+  p.lede { color: var(--muted); font-size: 1.05rem; margin-bottom: 36px; }
+  a { color: var(--accent); }
+  ul { margin: 0 0 14px; padding-left: 20px; color: var(--muted); }
+  li { margin-bottom: 6px; }
+  dl { margin: 0; }
+  dt { font-weight: 600; margin-top: 22px; }
+  dd { margin: 4px 0 0; color: var(--muted); }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px 24px; margin: 28px 0 0;
+  }
+  .standing { color: var(--muted); font-size: .95rem; }
+  footer { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  .hero { text-align: center; margin-bottom: 44px; }
+  .hero > img {
+    width: 108px; height: 108px; border-radius: 24px; display: block; margin: 0 auto 20px;
+    box-shadow: 0 14px 34px rgba(0,0,0,.14);
+  }
+  .hero h1 { font-size: 2.6rem; }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 34ch; margin: 0 auto 26px; }
+  .badge { display: inline-flex; }
+  .badge picture, .badge img { display: block; }
+  .badge img { height: 54px; width: auto; }
+  .badge:hover { filter: brightness(1.15); }
+  .price { color: var(--muted); font-size: .9rem; margin-top: 12px; }
+  .shots {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
+    margin: 0 0 36px;
+  }
+  .shots img { width: 100%; height: auto; display: block; border-radius: 18px; }
+  @media (max-width: 520px) {
+    .shots {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 62%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 6px;
+    }
+    .shots img { scroll-snap-align: center; }
+  }
+  ul.plain { list-style: none; padding: 0; margin: 0; }
+  ul.plain li { margin: 0 0 12px; padding-left: 20px; text-indent: -20px; }
+  ul.plain li::before { content: "\00b7"; color: var(--accent); font-weight: 700; padding-right: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon-256.png" alt="">
+    <h1>Vialog</h1>
+    <p>Rutinitas suntikan Anda, dicatat dengan kata-kata Anda sendiri.</p>
+    <a class="badge" href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-id&amp;l=id&amp;mt=8">
+      <picture>
+        <source srcset="../app-store-badge-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="../app-store-badge-black.svg" alt="Unduh Vialog di App Store" width="162" height="54">
+      </picture>
+    </a>
+    <div class="price">Gratis. Satu pembelian opsional, tidak pernah langganan.</div>
+  </div>
+
+  <p class="lede">Jurnal iPhone pribadi bagi orang yang sudah menjalani rutinitas suntikan: apa yang Anda gunakan, berapa banyak, kapan, di mana, dan bagaimana perasaan Anda. Nama, jumlah, dan jadwalnya berasal dari Anda. Vialog menyimpan catatannya.</p>
+
+  <div class="shots">
+    <img src="../shot-today.jpg" alt="Hari Ini: rutinitas yang perlu dicatat hari ini, waktu terjadwal berikutnya, dan minggu ini" width="552" height="1200" loading="lazy">
+    <img src="../shot-record.jpg" alt="Mencatat suntikan: jumlah, waktu, dan lokasi dalam satu lembar" width="552" height="1200" loading="lazy">
+    <img src="../shot-routine.jpg" alt="Jumlah rencana sebuah rutinitas dari waktu ke waktu, dengan setiap catatan sebagai titik" width="552" height="1200" loading="lazy">
+  </div>
+
+  <p class="standing">Catatan pribadi. App ini tidak merekomendasikan produk atau perubahan pengobatan. App ini tidak pernah memilih apa pun, tidak menghitung jumlah, dan tidak menyarankan perubahan.</p>
+
+  <h2>Yang dilakukan Vialog</h2>
+  <ul class="plain">
+    <li><strong>Menyimpan rutinitas Anda.</strong> Beri nama sendiri untuk setiap rutinitas, atur waktu dan jumlah rencananya, dalam satuan yang sudah Anda gunakan. Tidak ada yang dicari, disarankan, atau dikonversi.</li>
+    <li><strong>Mengingatkan Anda.</strong> Pengingat pada setiap waktu terjadwal, dikirim oleh iOS di perangkat. Secara default, pengingat hanya menyatakan bahwa Anda memiliki waktu terjadwal; nama dan jumlah rutinitas baru muncul di Layar Terkunci jika Anda mengaktifkannya.</li>
+    <li><strong>Mencatat dalam hitungan detik.</strong> Konfirmasi jumlahnya, pilih lokasi jika mau, tambahkan keterangan. Lokasi sebelumnya tetap terlihat, sehingga Anda dapat melihat di mana saja Anda pernah mencatat.</li>
+    <li><strong>Menyimpan jurnal.</strong> Check-in tentang energi, tidur, dan nafsu makan, gejala dengan kata-kata Anda sendiri, pengukuran tubuh, dan hasil lab, pada hari apa pun, terpisah dari rutinitas Anda kecuali Anda menautkannya.</li>
+    <li><strong>Menampilkan riwayat Anda.</strong> Setiap catatan per hari, dengan filter, dan grafik dari apa yang Anda catat dari waktu ke waktu.</li>
+    <li><strong>Menghitung persediaan Anda, jika Anda memintanya.</strong> Masukkan persediaan yang Anda miliki dan lihat hingga kapan persediaan itu cukup, berkurang sesuai catatan Anda sendiri. Vialog menyebutkan jumlah dan tanggal; Vialog tidak pernah meminta Anda mendapatkan apa pun.</li>
+    <li><strong>Ikut bersama Anda.</strong> Ekspor semuanya sebagai CSV atau laporan PDF (PDF dengan Vialog Pro), cadangkan ke satu file, pulihkan di iPhone baru, atau hapus semuanya.</li>
+  </ul>
+
+  <h2>Privat sejak dirancang</h2>
+  <p>Tanpa akun. Tanpa masuk. Tanpa iklan, tanpa analitik, tanpa pelacakan. Catatan Anda disimpan di iPhone Anda, ditampilkan di Apple Watch jika Anda menggunakan app watch-nya, dan Vialog tidak memiliki server untuk menerimanya. Kunci App yang opsional meminta Face ID, Touch ID, atau kode sandi Anda sebelum app terbuka, dan menampilkan penutup kosong di pengalih app. Baca <a href="../privacy.html">kebijakan privasi</a> (dalam bahasa Inggris).</p>
+
+  <h2>Bantuan</h2>
+  <ul class="plain">
+    <li><a href="help/injection-site-log.html">Menyimpan log lokasi suntikan</a></li>
+    <li><a href="help/reminders.html">Pengingat yang sesuai dengan rutinitas Anda</a></li>
+    <li><a href="help/apple-watch.html">Mencatat dari Apple Watch, widget, dan Siri</a></li>
+    <li><a href="help/export-for-appointment.html">Membawa catatan Anda ke janji temu</a></li>
+    <li><a href="help/no-server.html">Mengapa Vialog tidak memiliki server</a></li>
+  </ul>
+
+  <div class="card">
+    <h2 style="margin-top:0">Hubungi kami</h2>
+    <p>Pertanyaan, laporan bug, dan permintaan, semuanya kami terima. Kirim email ke <a href="mailto:csergay@gmail.com">csergay@gmail.com</a> dan Anda akan mendapat balasan.</p>
+    <p style="margin:0">Akan membantu jika Anda menyertakan versi iOS, versi dan build Vialog dari Pengaturan, serta apa yang sedang Anda lakukan saat terjadi masalah.</p>
+  </div>
+
+  <h2 id="questions">Pertanyaan umum</h2>
+  <dl>
+    <dt>Di mana catatan saya disimpan?</dt>
+    <dd>Di iPhone Anda, di penyimpanan milik app itu sendiri, dilindungi oleh kode sandi perangkat. Jika Anda mencadangkan iPhone ke iCloud atau komputer, data app menjadi bagian dari cadangan tersebut sesuai ketentuan Apple. Tidak ada yang disimpan di tempat lain.</dd>
+
+    <dt>Apakah Vialog memberi tahu saya apa yang harus digunakan, atau kapan?</dt>
+    <dd>Tidak. Vialog mencatat rutinitas yang sudah Anda jalani, dengan jumlah dan pada waktu yang Anda masukkan. Vialog tidak pernah memilih produk, menghitung jumlah, menyarankan lokasi, atau merekomendasikan perubahan. Jika ada yang perlu berubah dalam rutinitas Anda, bicarakan hal itu dengan orang yang meresepkannya.</dd>
+
+    <dt>Apa yang gratis, dan apa yang ditambahkan Vialog Pro?</dt>
+    <dd>Pencatatan, pengingat, jurnal, riwayat, lokasi, Kunci App, ekspor CSV, cadangan, pemulihan, dan penghapusan gratis dan akan tetap gratis. Vialog Pro adalah pembelian satu kali, bukan langganan, dan menambahkan empat hal: lebih dari tiga rutinitas aktif, persediaan, Tinjauan (catatan Anda pada satu sumbu waktu untuk rentang apa pun; 30 hari terakhir tetap gratis di Jurnal), dan laporan PDF. Semua yang sudah Anda miliki tetap berfungsi, baik Anda membelinya maupun tidak.</dd>
+
+    <dt>Saya membeli Vialog Pro. Bagaimana cara mendapatkannya kembali di iPhone baru?</dt>
+    <dd>Buka Pengaturan di dalam Vialog, lalu Vialog Pro, dan ketuk <strong>Pulihkan pembelian</strong>, dengan Akun Apple yang sama yang Anda gunakan saat membelinya. Berbagi Keluarga aktif, sehingga orang yang berbagi pembelian dengan Anda juga mendapatkannya. Catatan Anda terpisah dari pembelian: pindahkan catatan dengan file cadangan, atau melalui cadangan iPhone.</dd>
+
+    <dt>Pengingat tidak muncul.</dt>
+    <dd>Pengingat dikirim oleh iOS, dan pengirimannya tidak dijamin. Periksa apakah pemberitahuan untuk Vialog diizinkan di Pengaturan iOS, dan apakah mode Fokus sedang menahannya. <strong>Pengaturan › Periksa pengingat</strong> di Vialog menampilkan berapa banyak pengingat yang terdaftar dan sampai tanggal berapa pengingat tersebut berlaku.</dd>
+
+    <dt>Mengapa pengingat tidak menyebutkan rutinitasnya?</dt>
+    <dd>Karena Layar Terkunci dapat dibaca oleh siapa pun yang dapat melihat iPhone Anda. Secara default, pengingat hanya menyatakan bahwa Anda memiliki waktu terjadwal. Jika Anda lebih suka melihat nama dan jumlah rutinitas di sana, aktifkan <strong>Tampilkan nama rutinitas dan jumlah</strong> di Pengaturan.</dd>
+
+    <dt>Bisakah saya mengubah atau menghapus catatan?</dt>
+    <dd>Bisa. Buka catatan dari Hari Ini atau Jurnal untuk mengoreksi jumlah, waktu, lokasi, atau keterangannya, atau untuk menghapusnya. Waktu terjadwal yang catatannya dihapus kembali menjadi “belum dicatat”. Setiap perubahan disimpan sebagai revisi.</dd>
+
+    <dt>Mengapa satuan tidak pernah dikonversi?</dt>
+    <dd>Karena konversi bergantung pada konsentrasi yang tidak diketahui Vialog dan tidak boleh diasumsikan. Jumlah disimpan persis seperti yang Anda ketik, dalam satuan yang Anda pilih, dan catatan dalam satuan lain ditampilkan apa adanya, tidak digabungkan.</dd>
+
+    <dt>Bagaimana cara menghapus semuanya?</dt>
+    <dd>Pengaturan, lalu Ekspor, cadangan, dan hapus, lalu <strong>Hapus semua catatan</strong>. Menghapus app juga menghapus semua yang disimpannya. Tidak ada yang disimpan di tempat lain yang perlu Anda minta.</dd>
+  </dl>
+
+  <footer>
+    <a href="help/">Bantuan</a> · <a href="../privacy.html">Kebijakan Privasi</a> (dalam bahasa Inggris) · <a href="https://apps.apple.com/app/apple-store/id6809106441?pt=129383521&amp;ct=website-id&amp;l=id&amp;mt=8">Vialog di App Store</a> · © 2026 Colin Sergay
+    <!-- languages:row -->
+    <p class="languages" style="margin:14px 0 0;line-height:1.9"><a href="../" hreflang="en" lang="en">English</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../fr/" hreflang="fr" lang="fr">Français</a> · <a href="../es/" hreflang="es" lang="es">Español (España)</a> · <a href="../es-419/" hreflang="es-419" lang="es-419">Español (Latinoamérica)</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a> · <a href="../nl/" hreflang="nl" lang="nl">Nederlands</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../zh-hans/" hreflang="zh-Hans" lang="zh-Hans">简体中文</a> · <a href="../zh-hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a> · <a href="../sv/" hreflang="sv" lang="sv">Svenska</a> · <strong lang="id">Bahasa Indonesia</strong> · <a href="../da/" hreflang="da" lang="da">Dansk</a> · <a href="../nb/" hreflang="nb" lang="nb">Norsk bokmål</a> · <a href="../pl/" hreflang="pl" lang="pl">Polski</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a></p>
+    <!-- /languages:row -->
+  </footer>
+</main>
+</body>
+</html>
