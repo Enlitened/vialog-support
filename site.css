@@ -1,62 +1,60 @@
 /* The site's one stylesheet: the landing page in every language, help, the blog and the
-   privacy policy. It follows the app: the teal ground washing to a pale page, paper for a
-   card, a record slip's tear line, and an expanded face for display (the app's is SF Pro
-   expanded; Archivo is self-hosted so the site asks no other server for anything). */
-
-@font-face {
-  font-family: "Archivo";
-  font-style: normal;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
-  font-display: swap;
-  src: url("fonts/archivo-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: "Archivo";
-  font-style: normal;
-  font-weight: 100 900;
-  font-stretch: 62% 125%;
-  font-display: swap;
-  src: url("fonts/archivo-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+   privacy policy. It follows the app: an ultramarine ink on cool pale paper washing to a
+   clear page, white for a card, a record slip's tear line, a serif for titles, headings and
+   big numbers (the app's is New York, the system serif) over the system sans, and one warm
+   gold kept for now on the day ring. Every face is the visitor's own: the site ships no font
+   and asks no other server for anything. */
 
 :root {
-  --ground-top: #d3e9e6;   /* the accent as first light */
-  --ground: #eef4f3;
+  --ground-top: #e2eafa;   /* the accent as first light */
+  --ground: #f5f6f9;
   --paper: #ffffff;
-  --ink: #102426;
-  --muted: #4f6466;
-  --line: #d3e0df;
-  --accent: #0d707a;
-  --accent-ink: #0a5a62;
-  --mint: #8fdccd;         /* the icon's dot */
-  --deep: #0e4b51;         /* the icon's deep teal */
-  --on-deep: #e6f4f2;
-  --track: rgba(13, 112, 122, .13);
-  --shadow: 14, 75, 81;
+  --ink: #10142e;
+  --muted: #555b76;
+  --line: #d8ddee;
+  --accent: #2136b3;       /* ultramarine ink */
+  --accent-ink: #2136b3;
+  --now: #cc780a;          /* the one warm colour: now on the day ring, nothing else */
+  --deep: #1b2b96;         /* the icon's ground */
+  --on-deep: #eef1ff;
+  --deep-accent: #c5ceff;
+  --track: rgba(33, 54, 179, .12);
+  --shadow: 20, 30, 110;
 
-  --face: "Archivo", -apple-system, system-ui, "Hiragino Sans", "Apple SD Gothic Neo", "Helvetica Neue", sans-serif;
+  --cjk: "Noto Sans";
+  --serif: ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Times New Roman", var(--cjk), serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, Roboto, "Helvetica Neue", var(--cjk), sans-serif;
   --measure: 36em;
   --page: 1080px;
   --gutter: clamp(20px, 5vw, 64px);
   color-scheme: light dark;
 }
+/* New York has no Japanese, Korean or Chinese, so the app's headings fall to the system's own
+   face there; these name it for each language, for a device whose default would pick another
+   region's forms. Latin words and numbers in a heading stay in the serif. */
+:root:lang(ja) { --cjk: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, "Noto Sans JP", "Noto Sans CJK JP"; }
+:root:lang(ko) { --cjk: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", "Noto Sans CJK KR"; }
+:root:lang(zh-Hans) { --cjk: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Noto Sans CJK SC"; }
+:root:lang(zh-Hant) { --cjk: "PingFang TC", "Microsoft JhengHei UI", "Microsoft JhengHei", "Noto Sans TC", "Noto Sans CJK TC"; }
+:root:lang(ja), :root:lang(ko), :root:lang(zh) {
+  --serif: ui-serif, "New York", "Iowan Old Style", Charter, Georgia, "Times New Roman", var(--cjk), sans-serif;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --ground-top: #11393c;
-    --ground: #0b1a1c;
-    --paper: #13282b;
-    --ink: #e5f1ef;
-    --muted: #9db3b2;
-    --line: #23403f;
-    --accent: #5cc7cc;
-    --accent-ink: #7fd6d6;
-    --mint: #9fe3d7;
-    --deep: #0f3a3e;
-    --on-deep: #e5f1ef;
-    --track: rgba(92, 199, 204, .2);
+    --ground-top: #10142e;   /* midnight */
+    --ground: #06070f;
+    --paper: #151829;
+    --ink: #eceefb;
+    --muted: #a3a9c6;
+    --line: #272c4a;
+    --accent: #99adff;       /* the ink, pale periwinkle in the dark */
+    --accent-ink: #aebdff;
+    --now: #ffc75c;
+    --deep: #10163f;
+    --on-deep: #eceefb;
+    --deep-accent: #aebdff;
+    --track: rgba(153, 173, 255, .2);
     --shadow: 0, 0, 0;
   }
 }
@@ -67,21 +65,25 @@ body {
   margin: 0;
   color: var(--ink);
   background: linear-gradient(var(--ground-top), var(--ground) 560px) no-repeat, var(--ground);
-  font: 400 1.0625rem/1.65 var(--face);
-  font-stretch: 100%;
+  font: 400 1.0625rem/1.65 var(--sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-h1, h2, h3, dt, strong { font-weight: 650; }
+h1, h2, h3, dt, strong { font-weight: 600; }
 h1, h2 {
-  font-stretch: 125%;
+  font-family: var(--serif);
   font-weight: 700;
-  letter-spacing: -.012em;
+  letter-spacing: -.01em;
   line-height: 1.15;
   text-wrap: balance;
+  overflow-wrap: break-word;   /* a long compound on a phone breaks rather than runs off the page */
+  hyphens: auto;
+  hyphenate-limit-chars: 14 5 5;
 }
-h1 { font-size: clamp(2rem, 1.4rem + 2.6vw, 2.6rem); margin: 0 0 .4em; }
-h2 { font-size: 1.3rem; margin: 2.4em 0 .6em; }
+h1 { font-size: clamp(2.1rem, 1.5rem + 2.6vw, 2.75rem); margin: 0 0 .4em; }
+h2 { font-size: 1.4rem; margin: 2.2em 0 .55em; }
+:lang(ja) :is(h1, h2), :lang(ko) :is(h1, h2), :lang(zh) :is(h1, h2) { letter-spacing: 0; line-height: 1.3; }
+:lang(ja) :is(h1, h2) { word-break: auto-phrase; }   /* break a heading between phrases, where supported */
 p { margin: 0 0 1em; }
 p.lede { font-size: 1.2rem; line-height: 1.55; color: var(--muted); margin-bottom: 1.6em; text-wrap: pretty; }
 a { color: var(--accent-ink); text-decoration-thickness: 1px; text-underline-offset: .18em; }
@@ -106,7 +108,7 @@ nav.crumbs {
   display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   font-size: .9rem; color: var(--muted); margin-bottom: 56px;
 }
-nav.crumbs img { width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(var(--shadow), .18); }
+nav.crumbs img { width: 32px; height: 32px; border-radius: 8px; box-shadow: 0 4px 12px rgba(var(--shadow), .22); }
 nav.crumbs a { color: var(--muted); text-decoration: none; }
 nav.crumbs a:hover { color: var(--accent-ink); }
 .byline, .source { color: var(--muted); font-size: .92rem; }
@@ -116,11 +118,12 @@ nav.crumbs a:hover { color: var(--accent-ink); }
 .card {
   position: relative;
   background: var(--paper);
-  border-radius: 22px;
+  border-radius: 26px;
   padding: 26px 28px 24px;
   margin: 40px 0 0;
   padding-top: 32px;
-  box-shadow: inset 0 7px 0 var(--accent), 0 1px 0 rgba(var(--shadow), .04), 0 18px 40px -18px rgba(var(--shadow), .28);
+  overflow: hidden;
+  box-shadow: inset 0 7px 0 var(--accent), 0 0 0 1px rgba(var(--shadow), .05), 0 18px 40px -18px rgba(var(--shadow), .22);
 }
 .card p:last-child { margin: 0; }
 .card h2 {
@@ -132,6 +135,7 @@ nav.crumbs a:hover { color: var(--accent-ink); }
 .card h2::before, .card h2::after {
   content: ""; position: absolute; bottom: -8px;
   width: 18px; height: 18px; border-radius: 50%; background: var(--ground);
+  box-shadow: inset 0 0 0 1px rgba(var(--shadow), .05);
 }
 .card h2::before { left: -37px; }
 .card h2::after { right: -37px; }
@@ -141,7 +145,7 @@ ul.articles li { margin: 0; border-top: 1px solid var(--line); }
 ul.articles li:last-child { border-bottom: 1px solid var(--line); }
 ul.articles a { display: block; padding: 18px 0; text-decoration: none; color: var(--muted); }
 ul.articles a strong {
-  display: block; color: var(--ink); font-stretch: 112%; font-size: 1.08rem; margin-bottom: 2px;
+  display: block; color: var(--ink); font-family: var(--serif); font-size: 1.18rem; line-height: 1.3; margin-bottom: 3px;
 }
 ul.articles a:hover strong { color: var(--accent-ink); }
 ul.articles a span { font-size: .95rem; }
@@ -164,23 +168,24 @@ footer .languages strong { color: var(--ink); font-weight: 600; }
 .hero { padding: 56px 0 24px; display: grid; gap: 0 56px; align-items: center; }
 .hero > img {
   width: 76px; height: 76px; border-radius: 18px; display: block; margin-bottom: 28px;
-  box-shadow: 0 12px 28px -8px rgba(var(--shadow), .45);
+  box-shadow: 0 12px 28px -8px rgba(var(--shadow), .5);
 }
 .hero h1 {
-  font-size: clamp(3.6rem, 2rem + 8vw, 7rem);
-  font-weight: 760;
-  letter-spacing: -.035em;
-  line-height: .92;
-  margin: 0 0 .22em;
+  font-size: clamp(3.8rem, 2.2rem + 8vw, 7.4rem);
+  font-weight: 700;
+  letter-spacing: -.025em;
+  line-height: .95;
+  margin: 0 0 .2em;
 }
 .hero > p {
-  font-size: clamp(1.3rem, 1.1rem + .9vw, 1.7rem);
-  line-height: 1.3;
-  font-stretch: 108%;
-  max-width: 22ch;
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 1.15rem + 1vw, 1.85rem);
+  line-height: 1.28;
+  max-width: 25ch;
   margin: 0 0 32px;
   text-wrap: balance;
 }
+:lang(ja) .hero > p, :lang(ko) .hero > p, :lang(zh) .hero > p { line-height: 1.45; font-weight: 600; }
 .badge { display: inline-flex; justify-self: start; border-radius: 10px; }
 .badge picture, .badge img { display: block; }
 .badge img { height: 54px; width: auto; }
@@ -188,7 +193,7 @@ footer .languages strong { color: var(--ink); font-weight: 600; }
 .price { color: var(--muted); font-size: .92rem; margin-top: 14px; }
 
 /* The day as a sun path: midnight at the foot, noon at the top, a hand for now. When,
-   never a score — the same ring Today draws, and the icon's own. */
+   never a score — the same ring Today draws, and the icon's own. The hand is the gold. */
 .day-ring { width: min(100%, 440px); justify-self: center; margin: 48px 0 0; position: relative; }
 .day-ring::before {
   content: ""; position: absolute; inset: 12%; border-radius: 50%;
@@ -201,26 +206,26 @@ footer .languages strong { color: var(--ink); font-weight: 600; }
 .day-ring .tick { stroke: var(--muted); stroke-width: 1.5; opacity: .35; }
 .day-ring .tick.major { opacity: .8; stroke-width: 2; }
 .day-ring .hour {
-  fill: var(--muted); font: 600 13px var(--face); font-stretch: 125%;
+  fill: var(--muted); font: 600 13px var(--sans);
   text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums;
 }
-.day-ring .hand { fill: var(--mint); stroke: var(--paper); stroke-width: 5; filter: drop-shadow(0 0 10px var(--mint)); }
+.day-ring .hand { fill: var(--now); stroke: var(--paper); stroke-width: 5; filter: drop-shadow(0 0 9px color-mix(in srgb, var(--now) 70%, transparent)); }
 .day-ring .entry { fill: var(--paper); stroke: var(--accent); stroke-width: 3; stroke-dasharray: 4 4; transition: fill .4s, stroke-dasharray .4s; }
-.day-ring .entry.past { fill: var(--ground); stroke: var(--ground); stroke-width: 2; stroke-dasharray: none; }
+.day-ring .entry.past { fill: var(--paper); stroke: var(--paper); stroke-width: 2; stroke-dasharray: none; }
 .day-ring .now {
-  fill: var(--ink); font: 650 34px var(--face); font-stretch: 125%;
-  text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums;
-  letter-spacing: -.02em;
+  fill: var(--ink); font: 600 38px var(--serif);
+  text-anchor: middle; dominant-baseline: central; font-variant-numeric: tabular-nums lining-nums;
+  letter-spacing: -.01em;
 }
 
 /* Sections: a heading column and a reading column. */
 .home section { padding: 72px 0 0; }
-.home section > h2 { margin: 0 0 20px; font-size: clamp(1.45rem, 1.2rem + 1vw, 1.9rem); }
+.home section > h2 { margin: 0 0 20px; font-size: clamp(1.6rem, 1.3rem + 1.1vw, 2.1rem); }
 
 .home .intro { padding-top: 40px; }
 .intro .lede {
   font-size: clamp(1.25rem, 1.05rem + .8vw, 1.6rem); line-height: 1.45;
-  color: var(--ink); max-width: 30em; font-stretch: 104%;
+  color: var(--ink); max-width: 30em;
   margin-bottom: 56px;
 }
 .shots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 3vw, 40px); margin: 0 0 40px; align-items: start; }
@@ -228,7 +233,7 @@ footer .languages strong { color: var(--ink); font-weight: 600; }
   width: 100%; height: auto; display: block;
   border-radius: clamp(18px, 3.2vw, 38px);
   border: 1px solid var(--line);
-  box-shadow: 0 30px 60px -28px rgba(var(--shadow), .5);
+  box-shadow: 0 30px 60px -28px rgba(var(--shadow), .45);
 }
 .shots img:nth-child(2) { margin-top: clamp(0px, 6vw, 72px); }
 .shots img:nth-child(3) { margin-top: clamp(0px, 3vw, 36px); }
@@ -241,7 +246,7 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 .does li {
   margin: 0; padding: 18px 0 20px; border-top: 1px solid var(--line); color: var(--muted);
 }
-.does li strong { display: block; color: var(--ink); font-stretch: 112%; font-size: 1.08rem; margin-bottom: 4px; }
+.does li strong { display: block; color: var(--ink); font-family: var(--serif); font-size: 1.18rem; line-height: 1.3; margin-bottom: 4px; }
 
 .home .private {
   margin-top: 88px;
@@ -254,24 +259,25 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 .private::after {
   /* The ring again, very faint, running off the band's edge. */
   content: ""; position: absolute; width: 520px; height: 520px; right: -160px; top: -140px;
-  border-radius: 50%; border: 26px solid rgba(143, 220, 205, .09);
+  border-radius: 50%; border: 26px solid rgba(197, 206, 255, .1);
 }
-.private h2 { color: var(--mint); }
+.private h2 { color: var(--deep-accent); }
 .private p { font-size: clamp(1.1rem, 1rem + .4vw, 1.28rem); line-height: 1.6; max-width: 34em; margin: 0; position: relative; z-index: 1; }
-.private a { color: var(--mint); }
+.private a { color: var(--deep-accent); }
+.private :focus-visible { outline-color: var(--deep-accent); }
 
 .links ul.plain li { margin: 0; border-top: 1px solid var(--line); }
 .links ul.plain li:last-child { border-bottom: 1px solid var(--line); }
 .links ul.plain a {
   display: block; padding: 16px 0; text-decoration: none; color: var(--ink);
-  font-stretch: 108%; font-weight: 550; font-size: 1.08rem;
+  font-weight: 500; font-size: 1.08rem;
 }
 .links ul.plain a:hover { color: var(--accent-ink); }
 
 .contact .card { margin: 0; max-width: 40em; }
 
 .faq dl { margin: 0; }
-.faq dt { font-stretch: 108%; font-size: 1.08rem; padding-top: 22px; border-top: 1px solid var(--line); }
+.faq dt { font-family: var(--serif); font-size: 1.18rem; line-height: 1.3; padding-top: 22px; border-top: 1px solid var(--line); }
 .faq dt:first-child { border-top: 0; padding-top: 0; }
 .faq dd { margin: 6px 0 22px; color: var(--muted); }
 
@@ -307,8 +313,10 @@ ul.plain { list-style: none; padding: 0; margin: 0; }
 }
 
 @media (prefers-contrast: more) {
-  :root { --muted: var(--ink); --line: var(--muted); }
+  :root { --muted: var(--ink); --line: var(--muted); --accent-ink: var(--ink); }
   body { background: var(--ground); }
+  .private { --muted: var(--on-deep); }
+  .private h2, .private a { color: var(--on-deep); }
 }
 @media (prefers-reduced-motion: reduce) {
   .day-ring .entry { transition: none; }
